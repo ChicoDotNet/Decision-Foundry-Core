@@ -1,16 +1,16 @@
 # Candidate eligibility and preferred-model contract
 
-- Status: Proposed architecture extension; not yet implemented
+- Status: Approved architecture direction; not yet implemented
 - Decision owner: Alfonso Lara Ramos
 - Date: 2026-08-13
 
 ## Purpose
 
-Decision Foundry Core must keep **job affinity** separate from **candidate eligibility/default-selection policy**.
+Decision Foundry Core keeps **job affinity** separate from **candidate eligibility/default-selection policy**.
 
 The canonical 100-statement scorecard answers how well an occupant candidate fits a seat. A host may independently decide which concrete candidates are eligible to compete or be selected explicitly based on budget, licensing, policy, availability or user preference.
 
-Core should therefore expose generic hooks for host-supplied candidate eligibility and preferred/default candidate metadata without knowing the product-specific reason behind them.
+Core therefore exposes generic hooks for host-supplied candidate eligibility and preferred/default candidate metadata without knowing the product-specific reason behind them.
 
 ## Separation of concerns
 
@@ -37,9 +37,9 @@ Eligibility determines whether a candidate may participate.
 
 Affinity remains the equal-weight arithmetic mean of the seat's 100 assessment responses and must not be altered by budget/preference metadata.
 
-## Proposed generic metadata
+## Generic metadata
 
-Exact public type names remain an implementation decision, but Core may support equivalents of:
+Exact public type names remain an implementation decision, but Core requires equivalents of:
 
 - stable concrete candidate identity;
 - optional preferred/default-candidate flag or rank;
@@ -49,7 +49,7 @@ Exact public type names remain an implementation decision, but Core may support 
 - policy/snapshot version used to determine eligibility; and
 - reason/provenance metadata suitable for reconstruction without exposing private host identity semantics.
 
-Core must not require cost metadata when a host does not use cost-based eligibility.
+Core does not require cost metadata when a host does not use cost-based eligibility.
 
 ## Preferred/default candidate
 
@@ -73,7 +73,9 @@ candidate expected cost > maximum allowed cost
     -> candidate is ineligible under that policy snapshot
 ```
 
-Core does not define the currency, billing model, averaging window or normalization formula. Those belong to the host.
+The host may also designate a default/preferred candidate as eligible through its own policy even when that candidate's cost relationship differs from the generic alternative-candidate ceiling. Core consumes the host's final eligibility decision rather than re-deriving product policy.
+
+Core does not define the currency, billing model, averaging window, usage window or cost-normalization formula. Those belong to the host.
 
 A host may omit cost policy entirely.
 
@@ -93,7 +95,7 @@ The staffing snapshot preserves the concrete candidate actually used and the act
 
 ## Reconstruction
 
-A completed staffing/binding snapshot should be able to reconstruct:
+A completed staffing/binding snapshot must be able to reconstruct:
 
 - candidate identity;
 - eligibility result;
@@ -109,7 +111,7 @@ A later policy update must not change historical eligibility evidence.
 
 Core must not infer or persist product-specific concepts such as:
 
-- Enterprise user spend history;
+- Enterprise user usage/spend history;
 - social-contact budgets;
 - salary, seniority or purchasing authority;
 - commercial plan limits; or
@@ -117,9 +119,9 @@ Core must not infer or persist product-specific concepts such as:
 
 Those remain host concerns.
 
-## Validation required if this proposal is approved
+## Validation required before implementation is complete
 
-Tests should demonstrate at least that:
+Tests must demonstrate at least that:
 
 1. an ineligible candidate cannot win automatic staffing;
 2. an ineligible candidate cannot be explicitly bound without a new/changed host policy;
@@ -127,5 +129,6 @@ Tests should demonstrate at least that:
 4. a generic cost ceiling can remove an otherwise high-affinity candidate from the eligible set;
 5. among remaining eligible candidates, the highest seat affinity still wins automatically;
 6. explicit binding may choose any eligible non-default candidate;
-7. hosts may omit cost policy entirely; and
-8. completed-run policy/eligibility evidence remains immutable.
+7. the host may explicitly keep a preferred/default candidate eligible under its own versioned policy;
+8. hosts may omit cost policy entirely; and
+9. completed-run policy/eligibility evidence remains immutable.
