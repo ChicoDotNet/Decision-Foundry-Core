@@ -1,12 +1,49 @@
 # Decision Foundry Core
 
-Decision Foundry Core is the reusable open-source .NET engine for the canonical **72-seat Decision Foundry institution**.
+Decision Foundry Core is the reusable open-source .NET engine behind the canonical **72-seat Decision Foundry institution**.
 
-The intended public experience is deliberately small: reference the DLL, provide one or more AI/model connectors, let the Recruiter staff the institution using a **best person for the job** policy, then execute work through the institutional flow.
+It is designed so someone can understand and use the engine without knowing any private Enterprise strategy: provide eligible AI/model connectors, optionally bind specific connectors to specific seats, let the Recruiter staff the institution, create an Instrumentation Plan for the work, recruit 12 of the 25 staffed Directors, and execute through provider-neutral contracts.
 
-## Public runtime model
+## The shortest complete mental model
 
-Core represents 72 distinct canonical seats:
+```text
+Work request
+    |
+    v
+Instrumentation Plan
+  - decisive questions
+  - artifacts / deliverables
+  - lineage-lens references
+  - evidence requirements
+  - required expertise
+    |
+    v
+72 canonical seat profiles
+      x
+eligible concrete AI/model candidates
+    |
+    v
+72 occupied seats
+    |
+    v
+25 occupied Directors
+      x
+current Instrumentation Plan
+    |
+    v
+12 recruited Directors
+    |
+    v
+bounded institutional execution
+```
+
+Core is **not** 72 simultaneous model calls. The 72 are logical institutional jobs.
+
+## Four concepts to understand first
+
+### Seat = the job
+
+Core defines **72 canonical seats**:
 
 - 1 Strategist;
 - 5 Vice Presidents;
@@ -15,45 +52,109 @@ Core represents 72 distinct canonical seats:
 - 28 Elders; and
 - 1 Chief Delivery Officer / flow role.
 
-Every seat has its own mission and execution contract. The 72 seats remain logically distinct even when the same underlying AI/model connection occupies many or all of them.
+Every seat has a stable identity and an executable role profile describing why that job exists.
 
-### Institutional staffing
+### Occupant candidate = the concrete AI/model connection
 
-The Recruiter evaluates eligible occupant/model candidates against the 72 canonical seat profiles and assigns the best available occupant to each seat.
+A candidate is a concrete selectable connector/model/version/deployment identity supplied by the host.
 
-A single user may configure one AI/model connection and legitimately use it to occupy all 72 seats. If that connection exposes multiple models, different models may be chosen for different seats.
+The same candidate may occupy many or all 72 seats. Different concrete versions from one provider may occupy different seats.
 
-The Recruiter does **not** require its own model connection merely to make the trivial single-candidate staffing decision.
+A host may use:
 
-### Work-specific Director recruitment
+- fully automatic staffing;
+- fully explicit seat binding; or
+- mixed staffing where selected seats are pinned and the Recruiter fills the rest.
 
-For a concrete work request, the Recruiter evaluates the **25 already occupied Directors D01-D25** and selects exactly **12 Directors** whose seat+occupant combinations have the strongest affinity for the assignment.
+### SeatAffinity = deterministic fit of candidate to job
+
+Every canonical seat owns an ideal scorecard of exactly **100 positive statements**.
+
+For each candidate, the host/connector supplies one `0..100` agreement percentage per statement. Version 1 affinity is simply:
+
+```text
+SeatAffinity = arithmetic mean of the 100 responses
+```
+
+The 100-answer vector and scorecard version are evidence. Candidate eligibility/default/cost policy is separate and must never alter the stored affinity percentage.
+
+### Instrumentation Plan = what work this case actually needs
+
+The [Instrumentation Plan contract](docs/architecture/instrumentation-plan-contract.md) connects the work request to:
+
+- decisive questions;
+- selected artifact/deliverable references;
+- useful lineage-lens references;
+- evidence requirements;
+- required expertise;
+- dependencies and quality gates; and
+- the staffed Directors recruited to perform that work.
+
+It prevents the engine from asking every Director to participate in every case or selecting Directors by title matching alone.
+
+## What the Recruiter does
+
+The Recruiter has two distinct responsibilities.
+
+### Stage 1 — staff the whole institution
+
+For every unbound seat, Core compares the eligible candidates against the same version of that seat's 100-statement scorecard and assigns the highest-affinity candidate.
+
+A single user/community host can expose one connection and legitimately use it for all 72 seats. If several concrete models are available, different models may win different seats.
+
+### Stage 2 — recruit 12 of the 25 staffed Directors for the work
+
+For a concrete work request, Core evaluates only the **25 occupied Director seats D01-D25** against the Instrumentation Plan and selects exactly **12 distinct Director seats with their current occupants**.
 
 The other institutional roles do not compete for those 12 Director positions. Governance, synthesis, transversal and flow roles activate according to their own contracts.
 
-The 12 selected Directors are not necessarily 12 simultaneous calls. Runtime scheduling remains bounded and dependency-aware.
+Twelve recruited Directors also does not imply twelve concurrent requests. Scheduling remains bounded and dependency-aware.
 
-See the [Core runtime contract](docs/architecture/core-runtime-contract.md), [canonical seat profile contract](docs/architecture/seat-profile-contract.md) and [Recruiter contract](docs/architecture/recruiter-contract.md).
+## Candidate eligibility and explicit choice
+
+Core lets a host keep **eligibility/default-selection policy** separate from job affinity.
+
+A host may mark candidates eligible/ineligible, designate a preferred/default candidate, provide optional normalized expected-cost metadata and apply a generic ceiling. Those values decide **who may compete or be selected**; they do not add or subtract points from `SeatAffinity`.
+
+A host can explicitly bind any eligible concrete candidate to a seat. The binding preserves the exact connector/model/version/deployment identity and whether the choice was automatic or explicit.
+
+See the [candidate eligibility](docs/architecture/candidate-eligibility-contract.md) and [explicit seat binding](docs/architecture/seat-binding-contract.md) contracts.
+
+## Public/private boundary
+
+Core intentionally does not know:
+
+- Enterprise users or tenants;
+- social contacts;
+- private candidate-source rules;
+- private usage/spend history;
+- private reassessment cadence;
+- private manual-team semantics; or
+- commercial product strategy.
+
+Consuming products supply those concerns through generic host extension points.
 
 ## Reference sample
 
-Core will include at least one intentionally small sample host — initially Console, with WinForms/XAML remaining possible later — whose only job is to prove the DLL contract.
+The first release should include a deliberately small **Console sample** that proves the DLL rather than becoming another product.
 
-The sample should show:
+It should show:
 
-- all 72 canonical seats;
-- the occupant/model assigned to each seat where appropriate;
-- the 12 Directors recruited for the current work;
-- which institutional roles become active as the flow advances; and
-- execution state such as `Idle`, `Working` and `Completed`.
+- the 72 canonical seats;
+- their concrete occupants;
+- automatic vs explicit binding provenance;
+- the current Instrumentation Plan summary;
+- the 12 recruited Directors;
+- required non-Director activations; and
+- observable state such as `Idle`, `Working` and `Completed`.
 
-The sample is not intended to become a second product.
+A WinForms/XAML monitor may be added later without changing the Core contract.
 
-## Product-family role
+## Read the documentation in order
 
-The public Core repository contains only reusable contracts and implementation that can stand independently of private product infrastructure.
+If you are new to Core, start with the **[Guided Reading Path](docs/reading-guide.md)** rather than browsing `docs/` randomly.
 
-Core does not know Enterprise users, tenants, social contacts, private weighting formulas, credentials or manual-team semantics. Consuming products supply an authorized occupant candidate set and product-specific policy through public extension points.
+The shorter architecture index is [docs/README.md](docs/README.md).
 
 ## License
 
@@ -67,6 +168,18 @@ Before accepting external contributions, this project will adopt contribution te
 
 ## Current status
 
-**Foundation / architecture contract only.** No Decision Foundry implementation has been promoted to Core yet.
+**Foundation / architecture contract only.** No complete Decision Foundry runtime implementation has been promoted to Core yet.
 
-The approved first implementation shape is a reusable DLL with the stable 72-seat catalog, provider-neutral occupant/connectors, institutional staffing, 12-of-25 Director recruitment, bounded orchestration and observable execution state.
+The approved first implementation shape is a reusable .NET DLL with:
+
+- stable 72-seat catalog/profiles;
+- 100-statement scorecards;
+- provider-neutral occupant/connectors;
+- candidate eligibility and explicit/mixed seat binding;
+- institutional staffing;
+- Instrumentation Plan contract;
+- 12-of-25 Director recruitment;
+- bounded orchestration; and
+- observable execution state.
+
+Implementation must arrive through reviewed, tested increments rather than by copying private product code wholesale.
