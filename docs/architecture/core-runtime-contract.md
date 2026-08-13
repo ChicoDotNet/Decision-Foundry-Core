@@ -29,25 +29,60 @@ A single-user community host may bind the same AI/model connection to every one 
 
 Core must not assume that 72 seats imply 72 providers, accounts, subscriptions, human users or concurrent calls.
 
-## Recruitable layer: 12 of 25 Directors
+## Institutional staffing modes
 
-Director recruitment operates only over D01-D25.
+Core supports automatic, explicit and mixed staffing.
 
-For the current work request, the Recruiter evaluates each Director assignment as:
+### Automatic staffing
+
+When a seat has no explicit binding, the Recruiter uses the canonical 100-statement scorecard for that seat and selects the eligible occupant candidate with the highest arithmetic-mean affinity.
+
+### Explicit staffing
+
+A host/user may explicitly choose which eligible AI/connector candidate occupies a seat. This public capability is defined by the [Explicit seat binding contract](seat-binding-contract.md).
+
+An explicit binding takes precedence over automatic Recruiter selection for that seat. The Recruiter does not silently replace the selected candidate merely because another candidate has a higher score.
+
+### Mixed staffing
+
+A host may pin some seats explicitly and allow the Recruiter to fill every remaining seat automatically.
+
+Conceptually:
 
 ```text
-Director seat profile
-        +
-occupant / connector-model profile
-        =
-Director assignment affinity
+72 canonical seats
+        |
+        +-- explicit binding? --> chosen connector/occupant
+        |
+        +-- otherwise --------> Recruiter scorecard winner
+        |
+        v
+72 occupied seats
 ```
 
-It then selects **exactly 12 distinct Director seats with their chosen occupants**.
+The staffing snapshot must preserve whether every seat was selected automatically or explicitly.
 
-The selection unit is therefore the combination of the Director role and its occupant. A very capable model occupying a Director seat irrelevant to the assignment does not automatically outrank the correct Director role, and a highly relevant Director seat paired with an incapable occupant is likewise not a strong assignment.
+## Recruitable layer: 12 of 25 Directors
 
-The same occupant may occupy many Director candidates and may occupy multiple selected Directors. In the simplest one-user/one-AI deployment, the same occupant may fill all 25 Director candidates while the Recruiter still chooses the 12 Director roles with the best fit for the assignment.
+Director recruitment operates only over D01-D25 after the institution has been staffed.
+
+The Recruiter then selects **exactly 12 distinct occupied Director seats** for the current work request according to work-specific relevance.
+
+The same occupant may occupy many Director seats and may appear in multiple selected Directors.
+
+An explicit seat binding controls **who occupies a Director seat**; it does not automatically force that Director into the top-12 work cohort.
+
+For example:
+
+```text
+Explicit binding: D17 -> Connector B
+          |
+          v
+D17 is occupied by Connector B
+          |
+          v
+D17 still competes with D01-D25 for one of 12 work slots
+```
 
 ## Institutional roles outside Director recruitment
 
@@ -75,11 +110,13 @@ The invariant is **12 recruited Directors**, not 12 concurrent requests and cert
 The public API should make role and occupant/model resolution explicit and replaceable. Exact type names remain an implementation detail until the first code increment, but the contract requires equivalents of:
 
 - stable seat identity for all 72 seats;
-- executable seat profiles;
+- executable seat profiles and versioned scorecards;
 - an opaque occupant/candidate identity;
 - provider-neutral model connector abstraction;
 - connector/occupant resolver;
-- Director seat/occupant assignment value;
+- explicit seat-binding value/provenance;
+- automatic staffing result/provenance;
+- immutable/versioned 72-seat staffing snapshot;
 - a 12-Director recruitment result;
 - orchestration that invokes active roles through abstractions rather than directly through a vendor SDK; and
 - observable execution state.
@@ -97,6 +134,10 @@ The smallest useful deployment is intentionally small:
     |
 same occupant available to all 72 seats
     |
+automatic or explicit seat bindings
+    |
+72 occupied seats
+    |
 Recruiter evaluates D01-D25
     |
 12 Directors selected for the work
@@ -106,19 +147,24 @@ required synthesis / governance / flow roles activate by contract
 
 The Recruiter itself does not need a separate model connection merely to make the trivial one-occupant case possible.
 
-## Optional recruitment capability
+## Recruitment and binding capabilities
 
-Core exposes the reusable [Recruiter contract](recruiter-contract.md) for Director selection and occupant affinity.
+Core exposes:
 
-A host may provide an already-selected 12-Director cohort instead, but a conforming recruited run selects 12 of the canonical 25 Directors.
+- the reusable [Recruiter contract](recruiter-contract.md);
+- the deterministic [100-statement seat scorecard](seat-scorecard-contract.md); and
+- the [Explicit seat binding contract](seat-binding-contract.md).
+
+A host may therefore choose between automatic staffing, fully manual connector selection or a hybrid of both without changing the 72-seat institution.
 
 ## Execution observability
 
 The runtime must expose enough state for a small sample host to show:
 
 - all 72 canonical seats;
-- which 12 Directors were recruited for the current work;
-- the occupant/model bound to active seats when disclosure is appropriate; and
+- occupant/model bound to each seat when disclosure is appropriate;
+- whether that occupant was chosen by the Recruiter or by explicit binding;
+- which 12 Directors were recruited for the current work; and
 - execution state such as `Idle`, `Working` or `Completed`.
 
 Governance/flow roles must be distinguishable from the recruited Director cohort rather than displayed as rejected Director candidates.
@@ -129,15 +175,17 @@ Core should include at least one intentionally small Console, WinForms or XAML s
 
 The sample should demonstrate:
 
-1. connector configuration;
+1. configuration of one or more connectors;
 2. the 72-seat catalog;
-3. recruitment of 12 of 25 Directors;
-4. role+occupant selection visibility;
-5. activation of required structural/governance roles as the flow advances; and
-6. execution-state indicators.
+3. optional manual selection of which connector occupies selected seats;
+4. automatic staffing of remaining seats;
+5. recruitment of 12 of 25 Directors;
+6. role+occupant selection provenance;
+7. activation of required structural/governance roles as the flow advances; and
+8. execution-state indicators.
 
 ## Compatibility rule
 
-Future products may extend candidate sourcing, weighting and composition, but they must preserve the public 72-seat institution and the 12-of-25 Director recruitment contract unless a later explicit versioned decision supersedes it.
+Future products may extend candidate sourcing, identity presentation and composition, but they must preserve the public 72-seat institution, explicit-binding semantics and 12-of-25 Director recruitment contract unless a later explicit versioned decision supersedes them.
 
-Product-specific identity, tenant, social-graph and private weighting semantics remain outside Core.
+Product-specific identity, tenant and social-graph semantics remain outside Core.
