@@ -6,82 +6,85 @@
 
 ## Purpose
 
-Decision Foundry Core is intended to be a small reusable .NET library that exposes the canonical **72 Decision Foundry seats** as an available institutional pool and executes work through a **12-agent cohort selected for the specific assignment**.
+Decision Foundry Core is intended to be a small reusable .NET library that exposes the canonical **72-seat Decision Foundry institution** through provider-neutral connectors and orchestration contracts.
 
-The public value proposition is deliberately simple: reference the DLL, provide one or more AI/model connectors, form seat/occupant assignments, select the 12 combinations with the strongest affinity for the work, and execute that cohort.
+The 72 seats are the permanent institutional roles, not a claim that 72 model calls execute concurrently.
 
-Core must remain useful to a single developer or small team without requiring multi-user infrastructure, an enabled Recruiter, tenant management or private product services.
+For each concrete work request, the Recruiter selects **12 of the 25 Director seats** as the domain cohort best suited to the assignment. The remaining institutional roles participate according to their existing structural/governance contracts rather than competing for one of those 12 Director positions.
 
-## 72-seat institutional pool
+## 72-seat institution
 
-Core owns a canonical catalog of **72 agent seats**. Each seat has a stable identity, role/task profile and an execution boundary that can obtain an AI/model connector from the host.
+Core owns a canonical catalog of 72 stable seats:
 
-The 72 seats are **available roles**, not 72 simultaneously executing workers.
+- 1 Strategist;
+- 5 Vice Presidents;
+- 25 Directors;
+- 12 transversal production/platform roles;
+- 28 Elders in four governance councils; and
+- 1 Chief Delivery Officer / flow role.
 
-For a particular work request, a logical agent is the combination of:
+Every seat has a stable identity and an executable role profile. A host must be able to resolve an AI/model connector occupant for any seat that becomes active.
 
-```text
-canonical seat
-    +
-occupant / connector-model candidate
-    =
-agent assignment
-```
+A single-user community host may bind the same AI/model connection to every one of the 72 seats. The seats remain logically distinct even when their occupant source is the same.
 
-The same occupant may be used for many seats. A single-user community host may therefore use one AI connection as the occupant source for all 72 seat assignments while preserving the distinct role of every seat.
+Core must not assume that 72 seats imply 72 providers, accounts, subscriptions, human users or concurrent calls.
 
-Core must not assume that 72 seats imply 72 providers, 72 accounts, 72 subscriptions or 72 human users.
+## Recruitable layer: 12 of 25 Directors
 
-## 12-agent execution cohort
+Director recruitment operates only over D01-D25.
 
-A normal Decision Foundry work request is executed by **exactly 12 selected agent assignments** from the 72-seat pool.
-
-Selection is based on the combination of:
-
-- the seat's role/capabilities and fit for the work; and
-- the occupant's connector/model capabilities and affinity for that same work.
-
-Therefore selection is not merely "choose 12 seats" and it is not merely "choose the best model". The selection unit is the **seat + occupant pair**.
-
-Conceptually:
+For the current work request, the Recruiter evaluates each Director assignment as:
 
 ```text
-72 canonical seats
-        x
-eligible occupants/connectors/models
-        |
-        v
-72 available seat/occupant assignments
-        |
-        v
-rank by assignment affinity
-        |
-        v
-12 selected agent assignments
-        |
-        v
-orchestrated execution
+Director seat profile
+        +
+occupant / connector-model profile
+        =
+Director assignment affinity
 ```
 
-The 12 selected agents do not have to execute concurrently. Core may schedule them sequentially, in bounded parallel groups or through fan-out/fan-in stages according to the orchestration contract. The invariant is the selected cohort size, not a concurrency count.
+It then selects **exactly 12 distinct Director seats with their chosen occupants**.
 
-If the optional Recruiter is disabled, the host must supply the 12 selected seat/occupant assignments explicitly. If the Recruiter is enabled, it produces the 12-agent cohort.
+The selection unit is therefore the combination of the Director role and its occupant. A very capable model occupying a Director seat irrelevant to the assignment does not automatically outrank the correct Director role, and a highly relevant Director seat paired with an incapable occupant is likewise not a strong assignment.
+
+The same occupant may occupy many Director candidates and may occupy multiple selected Directors. In the simplest one-user/one-AI deployment, the same occupant may fill all 25 Director candidates while the Recruiter still chooses the 12 Director roles with the best fit for the assignment.
+
+## Institutional roles outside Director recruitment
+
+Roles outside D01-D25 are **not** candidates in the top-12 Director competition.
+
+Their participation follows the Decision Foundry organizational flow:
+
+- Councils of Elders activate by default when a material transition reaches their assigned governance stage;
+- the Chief Delivery Officer / flow role observes and escalates according to its procedural contract;
+- Strategist and Vice Presidents participate according to the synthesis chain;
+- transversal roles and dynamic execution roles participate according to the task/orchestration contracts that require them.
+
+Therefore a run may involve more than 12 active institutional agents over its lifecycle even though the recruited **Director cohort is exactly 12**.
+
+## Concurrency is a separate concern
+
+The 12 recruited Directors do not have to execute simultaneously.
+
+Core orchestration may execute independent work concurrently, but concurrency remains bounded and stage-aware. Sequential work, bounded parallel waves and fan-out/fan-in are all valid according to dependency structure, budgets and rate limits.
+
+The invariant is **12 recruited Directors**, not 12 concurrent requests and certainly not 72 concurrent requests.
 
 ## Connector boundary
 
-The public API should make the seat-to-occupant/model boundary explicit and replaceable. Exact type names remain an implementation detail until the first code increment, but the contract requires equivalents of:
+The public API should make role and occupant/model resolution explicit and replaceable. Exact type names remain an implementation detail until the first code increment, but the contract requires equivalents of:
 
-- a stable `AgentSeatId` for each canonical seat;
-- a stable seat/task profile;
+- stable seat identity for all 72 seats;
+- executable seat profiles;
 - an opaque occupant/candidate identity;
-- an agent/model connector abstraction;
-- a connector resolver or factory;
-- a seat/occupant assignment value;
-- a 12-assignment execution cohort;
-- an orchestration runtime that invokes selected assignments through abstractions rather than directly through a specific AI vendor SDK; and
+- provider-neutral model connector abstraction;
+- connector/occupant resolver;
+- Director seat/occupant assignment value;
+- a 12-Director recruitment result;
+- orchestration that invokes active roles through abstractions rather than directly through a vendor SDK; and
 - observable execution state.
 
-Provider-specific adapters belong behind the connector abstraction. Core may ship reference adapters, but the runtime must remain provider-neutral.
+Provider-specific adapters belong behind the connector abstraction.
 
 ## Minimal operating mode
 
@@ -92,87 +95,49 @@ The smallest useful deployment is intentionally small:
     |
 1 configured AI/model connection
     |
-1 occupant source reused across all seats
+same occupant available to all 72 seats
     |
-72 possible seat/occupant assignments
+Recruiter evaluates D01-D25
     |
-12 selected assignments for this work
+12 Directors selected for the work
     |
-Decision Foundry Core execution
+required synthesis / governance / flow roles activate by contract
 ```
 
-In this mode one AI/model connection may occupy every candidate seat, but only the 12 seat/occupant combinations selected for the current assignment execute.
-
-Core does **not** require a Recruiter to operate if the host supplies the 12 assignments itself.
-
-This operating mode makes the method usable without recreating enterprise identity, tenancy or user-connection infrastructure.
+The Recruiter itself does not need a separate model connection merely to make the trivial one-occupant case possible.
 
 ## Optional recruitment capability
 
-Core may also expose the reusable [Recruiter contract](recruiter-contract.md).
+Core exposes the reusable [Recruiter contract](recruiter-contract.md) for Director selection and occupant affinity.
 
-The Recruiter is **not** a canonical seat. It is an optional composition capability that:
-
-1. evaluates eligible occupants/connectors/models;
-2. determines the strongest seat/occupant assignment for each canonical role where relevant; and
-3. selects the **12 seat/occupant combinations** with the strongest overall affinity for the requested work.
-
-A host that does not need recruitment can ignore this capability and provide the 12 assignments directly.
-
-## Extensibility boundary
-
-Core must allow a host to replace connector resolution, candidate sourcing and orchestration composition without modifying the 72 canonical seat definitions or the 12-agent cohort invariant.
-
-A host may provide an already-scoped candidate set or use richer connector-selection policy. Product-specific identity, relationship and weighting semantics remain outside the public engine.
+A host may provide an already-selected 12-Director cohort instead, but a conforming recruited run selects 12 of the canonical 25 Directors.
 
 ## Execution observability
 
-The runtime must expose enough state for a very small sample host to show the institutional pool and the selected cohort.
+The runtime must expose enough state for a small sample host to show:
 
-At minimum every seat must expose:
-
-- whether it is selected for the current work; and
+- all 72 canonical seats;
+- which 12 Directors were recruited for the current work;
+- the occupant/model bound to active seats when disclosure is appropriate; and
 - execution state such as `Idle`, `Working` or `Completed`.
 
-A typical run therefore shows 72 seats, 12 marked as selected and 60 remaining available/idle for that work request.
-
-Richer outcome/error information may be exposed separately. If a host enables the optional Recruiter, its execution state should be observable separately from the 72 canonical seats.
+Governance/flow roles must be distinguishable from the recruited Director cohort rather than displayed as rejected Director candidates.
 
 ## Reference sample
 
-Core should include at least one intentionally small sample application. Acceptable first forms are:
+Core should include at least one intentionally small Console, WinForms or XAML sample whose purpose is to prove the DLL contract.
 
-- Console;
-- WinForms; or
-- a XAML-based desktop host.
+The sample should demonstrate:
 
-The sample is not a second product. Its purpose is only to demonstrate:
-
-1. configuration of one or more connectors;
-2. formation of seat/occupant candidates;
-3. selection of the 12-agent cohort;
-4. execution of that cohort; and
-5. display of all 72 seats with selected/non-selected status plus `Idle`, `Working` or `Completed` execution state.
-
-The first sample should favor the lowest-friction option that proves the DLL contract.
-
-## What Core deliberately does not require
-
-Core must remain independently usable without:
-
-- tenant management;
-- organization-specific identity directories;
-- one AI account per seat;
-- one human user per seat;
-- an enabled Recruiter when the host supplies the 12 assignments;
-- private per-user weighting logic;
-- social/contact graphs; or
-- a commercial UI.
-
-These are host/product concerns, not prerequisites for the public engine.
+1. connector configuration;
+2. the 72-seat catalog;
+3. recruitment of 12 of 25 Directors;
+4. role+occupant selection visibility;
+5. activation of required structural/governance roles as the flow advances; and
+6. execution-state indicators.
 
 ## Compatibility rule
 
-Future products may extend the Core composition, but they must consume the public 72-seat pool, 12-agent cohort and optional recruitment contracts rather than require Core to understand private product strategy.
+Future products may extend candidate sourcing, weighting and composition, but they must preserve the public 72-seat institution and the 12-of-25 Director recruitment contract unless a later explicit versioned decision supersedes it.
 
-The public library remains the reusable engine; product-specific candidate sources, identity semantics and composition remain outside this repository.
+Product-specific identity, tenant, social-graph and private weighting semantics remain outside Core.
