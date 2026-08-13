@@ -14,9 +14,11 @@ Core is designed to support a very small deployment as well as richer hosts:
 
 The 72 seats remain logically distinct even when the same underlying model/provider services all of them. Core does not require 72 accounts, 72 providers or 72 human users.
 
-Core also does **not** require a recruiter component, tenant management or private multi-user weighting logic. Product-specific hosts may extend the composition without changing the public 72-seat contract.
+Core also does **not** require an enabled Recruiter, tenant management or private multi-user weighting logic. Product-specific hosts may extend the composition without changing the public 72-seat contract.
 
-See the [Core runtime contract](docs/architecture/core-runtime-contract.md) for the approved architecture direction.
+Core may optionally expose a reusable **Recruiter** capability that ranks connector/model candidates by task affinity. A single connection can expose multiple models, and hosts with multiple candidates can opt into periodic reweighting through a configurable policy. The Recruiter is not a 73rd Core seat and the public contract does not know product-specific users, contacts, teams or private weighting semantics.
+
+See the [Core runtime contract](docs/architecture/core-runtime-contract.md) and [Recruiter contract](docs/architecture/recruiter-contract.md) for the approved architecture direction.
 
 ## Reference sample
 
@@ -27,6 +29,8 @@ At minimum the sample will indicate whether each seat is:
 - `Idle`
 - `Working`
 - `Completed`
+
+If the optional Recruiter is enabled, its state is shown separately from the 72 canonical seats.
 
 The sample is not intended to become a second product.
 
@@ -50,4 +54,4 @@ Before accepting external contributions, this project will adopt contribution te
 
 **Foundation / architecture contract only.** No Decision Foundry implementation has been promoted to Core yet.
 
-The approved next shape is a reusable DLL exposing the 72-seat runtime, replaceable connector resolution and observable seat state. Implementation will arrive through reviewed increments rather than by copying the private product wholesale.
+The approved next shape is a reusable DLL exposing the 72-seat runtime, replaceable connector resolution, optional generic recruitment and observable execution state. Implementation will arrive through reviewed increments rather than by copying the private product wholesale.
