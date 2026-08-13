@@ -1,17 +1,40 @@
 # Decision Foundry Core
 
-Decision Foundry Core is the reusable open-source engine that will be promoted selectively from the private Decision Foundry product as reusable contracts and implementation prove themselves in production-oriented Enterprise work.
+Decision Foundry Core is the reusable open-source .NET engine for the canonical **72-seat Decision Foundry runtime**.
+
+The intended public experience is deliberately small: reference the DLL, provide one or more AI/model connectors, and let the runtime execute the 72 logical agent seats through a provider-neutral boundary.
+
+## Public runtime model
+
+Core is designed to support a very small deployment as well as richer hosts:
+
+- one user may configure a **single AI/model connection and bind it to all 72 seats**;
+- groups of seats may share connectors; or
+- every seat may receive its own connector.
+
+The 72 seats remain logically distinct even when the same underlying model/provider services all of them. Core does not require 72 accounts, 72 providers or 72 human users.
+
+Core also does **not** require a recruiter component, tenant management or private multi-user weighting logic. Product-specific hosts may extend the composition without changing the public 72-seat contract.
+
+See the [Core runtime contract](docs/architecture/core-runtime-contract.md) for the approved architecture direction.
+
+## Reference sample
+
+Core will include at least one intentionally small sample host — Console, WinForms or a XAML-based desktop application — whose only job is to prove the DLL contract and show the state of all 72 seats.
+
+At minimum the sample will indicate whether each seat is:
+
+- `Idle`
+- `Working`
+- `Completed`
+
+The sample is not intended to become a second product.
 
 ## Product-family role
 
-The intended sequence is deliberate:
+The public Core repository contains only reusable contracts and implementation that can stand independently of private product infrastructure.
 
-1. **Decision Foundry Enterprise first** — build and validate the private enterprise product and its real operating boundaries.
-2. **Promote reusable capabilities to Core** — move only code that is demonstrably reusable, independently testable, safe to publish and not product-specific.
-3. **Foundry Commons second** — use Core as the shared engine for the future social simulation product.
-4. **Foundry Commons as proof and distribution** — the social product can publicly demonstrate the engine that organizations can adopt privately through Decision Foundry Enterprise.
-
-This repository must not become a mirror of the private Decision Foundry repository. Promotion to Core is an explicit architectural and security decision.
+Reusable capabilities may be promoted from production-oriented product work when they are independently testable, safe to publish and not product-specific. Private products consume or extend Core; Core does not become a mirror of them and does not need to know their private strategy.
 
 ## License
 
@@ -25,6 +48,6 @@ Before accepting external contributions, this project will adopt contribution te
 
 ## Current status
 
-**Foundation only.** No Decision Foundry implementation has been promoted to Core yet.
+**Foundation / architecture contract only.** No Decision Foundry implementation has been promoted to Core yet.
 
-The private product remains the place where Enterprise architecture is designed and validated. Core will receive capabilities later through reviewed, traceable promotion increments.
+The approved next shape is a reusable DLL exposing the 72-seat runtime, replaceable connector resolution and observable seat state. Implementation will arrive through reviewed increments rather than by copying the private product wholesale.
