@@ -6,143 +6,157 @@
 
 ## Purpose
 
-Decision Foundry Core exposes a reusable Recruiter capability whose institutional selection responsibility is **to choose 12 of the 25 canonical Directors for a work request**.
+Decision Foundry Core exposes a reusable Recruiter capability with **two distinct responsibilities**:
 
-The Recruiter is not one of the 72 canonical seats. It does not choose whether Elders, the Chief Delivery Officer, Vice Presidents or the Strategist exist in the flow; those roles participate according to their structural/governance contracts.
+1. **institutional staffing** — choose the best available occupant for each of the 72 canonical seats; and
+2. **work-specific Director recruitment** — from the 25 already occupied Director seats, select the 12 Directors best suited to a concrete work request.
 
-Core owns only the generic recruitment mechanism. It must not know whether occupants represent Enterprise users, social contacts, service accounts, providers or another product-specific identity model.
+The Recruiter is not one of the 72 canonical seats. Core owns only the generic recruitment mechanism and must not know whether occupants represent Enterprise users, social contacts, service accounts, providers or another product-specific identity model.
 
-## Recruitment unit: Director seat + occupant
+The guiding principle is **best person for the job**.
 
-The atomic candidate evaluated by the Recruiter is:
+## Stage 1 — institutional staffing of all 72 seats
+
+For each canonical seat, the Recruiter evaluates the available occupant/model candidates against that seat's executable role profile.
+
+The staffing unit is:
 
 ```text
-Director role/task profile
+canonical seat profile
         +
 occupant connector/model profile
         =
-Director assignment candidate
+SeatOccupancyAffinity
 ```
 
-The Recruiter evaluates **D01-D25 only** for cohort inclusion.
+The Recruiter produces an occupied 72-seat institution by selecting the strongest available occupant for each seat.
 
-A single occupant may be eligible for all 25 Directors. In the smallest community deployment one AI/model connection may occupy every Director candidate while the Director roles remain logically distinct.
+A single occupant may fill many or all seats when it is the best available candidate. Core must not impose artificial uniqueness between occupants and seats.
 
-## Default behavior: automatic recruitment by affinity
+For every staffed seat the result must be inspectable enough to reconstruct:
 
-Given a work request and a host-supplied authorized occupant/candidate set, the Recruiter:
+- which occupant/model was selected;
+- which alternatives were considered;
+- the affinity/ranking evidence available to Core; and
+- the seat-profile version used for the decision.
 
-1. evaluates each of the 25 Director role profiles against the work;
-2. evaluates the eligible occupant/model options for each Director role;
-3. forms inspectable Director-seat + occupant assignment affinities; and
-4. selects **exactly 12 distinct Director seats with their chosen occupants**.
+### One connection with multiple engines
 
-The resulting top-12 cohort is the domain layer recruited for that work request.
+A single configured AI connection may expose more than one usable engine/model. The Recruiter may therefore select different models from the same connection for different seats according to their role fit.
 
-Affinity may consider legitimately exposed information such as:
+In the smallest community deployment one user may provide one connection that services all 72 seats. If that connection exposes only one model, that model can occupy every seat. If it exposes several models, the Recruiter may choose among them per seat.
 
-- the Director's canonical mission, responsibilities, expected outputs and quality focus;
-- model/provider capabilities;
-- modality/tool support;
-- availability/health;
-- bounded host-supplied capability metadata;
-- prior public or host-supplied performance signals; and
-- the current work requirements.
+## Stage 2 — recruit 12 of the 25 occupied Directors for the work
 
-The exact scoring formula remains an implementation decision until evidence exists.
+Once all 72 seats have occupants, the Recruiter evaluates only the **25 occupied Director seats D01-D25** for a concrete work request.
 
-## One connection with multiple engines
+The work-selection unit is:
 
-A single configured AI connection may expose more than one usable engine/model.
+```text
+Director seat profile
+        +
+current occupant profile
+        +
+work request
+        =
+DirectorWorkAffinity
+```
 
-The Recruiter may choose different engines/models from that same connection for different Director assignments when their role/work affinity differs.
+The Recruiter selects **exactly 12 distinct Directors** as the domain cohort for that work.
 
-Therefore one user does not imply one fixed model for all 12 recruited Directors.
+The result must preserve the seat+occupant combination. The same occupant may appear in multiple selected Director seats when that is the strongest available staffing.
 
-## Multiple occupants and periodic reweighting
-
-When the host supplies two or more eligible occupant candidates, the Recruiter supports reusable weighting/ranking rather than treating every occupant as permanently equivalent.
-
-Core exposes periodic reevaluation as a configurable policy boundary rather than hard-coding a commercial cadence. Product-specific weekly/monthly policy belongs to consuming products.
-
-## Roles not subject to top-12 recruitment
+## Roles outside the top-12 Director competition
 
 The top-12 competition applies only to D01-D25.
 
-Other canonical roles are activated by the orchestration/governance contract rather than ranked against the Directors:
+Other canonical roles already have occupants from Stage 1 and activate according to their institutional contracts:
 
 - Elders enter when their Council stage applies;
 - the Chief Delivery Officer / flow role observes relevant transitions by default;
-- VP and Strategist synthesis follows the institutional flow;
-- transversal and dynamic roles execute when their task contracts require them.
+- Vice Presidents and the Strategist participate in the synthesis chain;
+- transversal roles activate when their capability contracts are needed.
 
-These roles may still require connector/occupant resolution, but they are not candidates for one of the 12 Director slots.
+They never consume one of the 12 Director slots.
+
+## Multiple occupants and periodic reweighting
+
+When a host supplies two or more eligible occupant candidates, staffing must not treat them as permanently equivalent.
+
+Core supports a reusable weighting/ranking input and configurable reevaluation policy. A consuming product can refresh occupant weights periodically and then restaff seats using the latest approved snapshot.
+
+Core does not hard-code a product cadence, identity model or social relationship rule.
+
+A completed staffing/recruitment decision must remain reconstructible even after later weight recalculation.
 
 ## Candidate-set boundary
 
-Core separates **where occupants come from** from **which Director assignments are strongest**.
+Core separates **where occupants come from** from **how they are matched to seats**.
 
-The host supplies an already-authorized occupant candidate set. Core may rank/reweight that set and combine it with D01-D25, but it does not decide who is a valid Enterprise user, social contact or manually selected team member.
+The host supplies an already-authorized occupant candidate set. Core may rank/reweight that set against all 72 seat profiles and later rank the 25 staffed Directors for a work request, but Core does not decide who is a valid Enterprise user, social contact or manually selected team member.
 
 Conceptually:
 
 ```text
 Authorized occupant candidates
-            |
-            +--------------------------+
-                                       |
-25 canonical Director profiles        |
-            |                          |
-            +------------+-------------+
-                         |
-                         v
-                   Core Recruiter
-                seat fit + occupant fit
-                         |
-                         v
-              25 Director assignments
-                         |
-                         v
-              top 12 Director cohort
-                         |
-                         v
-               institutional flow
+             |
+             v
+      Institutional staffing
+      72 seat-profile matches
+             |
+             v
+       72 occupied seats
+             |
+             +-------------------------------+
+                                             |
+                                  D01-D25 occupied Directors
+                                             |
+                                             v
+                                    Work-specific ranking
+                                             |
+                                             v
+                                    12-Director cohort
+                                             |
+                                             v
+                                     institutional flow
 ```
 
 ## Public abstraction requirements
 
 Exact type names remain an implementation decision, but the public contract requires equivalents of:
 
-- work/request descriptor;
-- stable canonical Director identity and profile;
+- stable canonical seat identity/profile for all 72 seats;
 - opaque occupant/candidate identity;
-- connector/model options associated with an occupant;
+- one or more connector/model options associated with an occupant;
 - capability/availability metadata;
-- Director assignment candidate;
-- inspectable affinity/ranking result;
-- **12-Director recruitment result**;
+- seat-occupant affinity result;
+- an occupied-seat assignment;
+- an immutable/versioned 72-seat staffing snapshot;
+- work/request descriptor;
+- Director-work affinity result;
+- a **12-Director recruitment result**;
 - configurable reevaluation policy; and
 - observable Recruiter execution state.
 
 The public API remains provider-neutral.
 
-## Relationship to the 72-seat institution
+## Concurrency is separate from recruitment
 
-The institution contains 72 canonical seats. The Recruiter does **not** pick 12 of 72.
+Neither 72 staffed seats nor 12 recruited Directors imply that all corresponding external calls run simultaneously.
 
-It picks 12 of the **25 Directors**. Governance, synthesis, transversal and flow roles remain available and participate according to their own contracts.
-
-The 12 Directors also do not imply 12 simultaneous calls: runtime scheduling remains bounded, dependency-aware and stage-aware.
+Runtime scheduling remains bounded, dependency-aware and stage-aware. Independent work may fan out concurrently, while dependent layers execute in separate waves.
 
 ## Validation required before implementation is complete
 
 Tests must demonstrate that:
 
-1. exactly 25 Director candidates exist for recruitment;
-2. a valid recruited work request selects exactly 12 distinct Director seats;
-3. no Elder, VP, Strategist, transversal or flow seat can consume one of those 12 Director slots;
-4. one occupant may validly occupy all 25 Director candidates and multiple selected Directors;
-5. one connection exposing multiple models can produce different model choices by Director/work affinity;
-6. two or more occupants can produce deterministic, inspectable ranked/weighted results for a fixed input;
-7. host-supplied candidate scoping is respected; and
-8. no product-specific identity or relationship model is required by the public Recruiter contract.
+1. all 72 canonical seats receive an occupant in a complete staffing snapshot;
+2. the same occupant can validly fill multiple or all seats;
+3. different models from one connection can be selected for different seats;
+4. staffing results are deterministic/inspectable for fixed inputs and profile/weight versions;
+5. exactly 25 occupied Director candidates exist for work-specific recruitment;
+6. a valid work request selects exactly 12 distinct Director seats;
+7. no Elder, VP, Strategist, transversal or flow seat can consume one of those 12 Director slots;
+8. two or more occupants can be ranked/weighted without leaking product-specific identity semantics into Core;
+9. host-supplied candidate scoping is respected; and
+10. later reweighting does not rewrite historical staffing/recruitment evidence.
