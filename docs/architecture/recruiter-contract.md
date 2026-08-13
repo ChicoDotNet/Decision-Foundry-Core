@@ -6,153 +6,143 @@
 
 ## Purpose
 
-Decision Foundry Core may expose an **optional reusable Recruiter capability** that forms the best 12-agent execution cohort for a work request from the canonical 72-seat institutional pool.
+Decision Foundry Core exposes a reusable Recruiter capability whose institutional selection responsibility is **to choose 12 of the 25 canonical Directors for a work request**.
 
-The Recruiter is not one of the 72 canonical Decision Foundry seats. It is a composition capability that evaluates both **seat fit** and **occupant fit**.
+The Recruiter is not one of the 72 canonical seats. It does not choose whether Elders, the Chief Delivery Officer, Vice Presidents or the Strategist exist in the flow; those roles participate according to their structural/governance contracts.
 
-Core owns only the generic recruitment mechanism. It must not know whether occupants represent enterprise users, social contacts, service accounts, providers, subscriptions or another product-specific identity model.
+Core owns only the generic recruitment mechanism. It must not know whether occupants represent Enterprise users, social contacts, service accounts, providers or another product-specific identity model.
 
-## Recruitment unit: seat + occupant
+## Recruitment unit: Director seat + occupant
 
-The atomic candidate evaluated by the Recruiter is not a seat alone and not a model/connector alone.
-
-It is the combination:
+The atomic candidate evaluated by the Recruiter is:
 
 ```text
-seat role/task profile
+Director role/task profile
         +
 occupant connector/model profile
         =
-agent assignment candidate
+Director assignment candidate
 ```
 
-A single occupant may be eligible for many or all 72 seats. For example, in the smallest community deployment one AI/model connection may occupy all 72 seat candidates while the seat roles remain logically distinct.
+The Recruiter evaluates **D01-D25 only** for cohort inclusion.
+
+A single occupant may be eligible for all 25 Directors. In the smallest community deployment one AI/model connection may occupy every Director candidate while the Director roles remain logically distinct.
 
 ## Default behavior: automatic recruitment by affinity
 
 Given a work request and a host-supplied authorized occupant/candidate set, the Recruiter:
 
-1. evaluates occupant/model affinity against the role and task profile of the 72 canonical seats;
-2. forms the available seat/occupant assignment candidates;
-3. ranks those assignments for the specific work request; and
-4. selects **exactly 12 distinct canonical seats with their chosen occupants** as the execution cohort.
+1. evaluates each of the 25 Director role profiles against the work;
+2. evaluates the eligible occupant/model options for each Director role;
+3. forms inspectable Director-seat + occupant assignment affinities; and
+4. selects **exactly 12 distinct Director seats with their chosen occupants**.
 
-The selected cohort is therefore a set of 12 seat/occupant pairs.
+The resulting top-12 cohort is the domain layer recruited for that work request.
 
-Affinity may consider only information legitimately exposed through public contracts, such as:
+Affinity may consider legitimately exposed information such as:
 
-- the canonical seat role/task profile;
+- the Director's canonical mission, responsibilities, expected outputs and quality focus;
 - model/provider capabilities;
-- declared modality or tool support;
+- modality/tool support;
 - availability/health;
 - bounded host-supplied capability metadata;
 - prior public or host-supplied performance signals; and
-- task requirements.
+- the current work requirements.
 
-The exact scoring formula is deliberately not fixed until implementation evidence exists.
+The exact scoring formula remains an implementation decision until evidence exists.
 
 ## One connection with multiple engines
 
 A single configured AI connection may expose more than one usable engine/model.
 
-The Recruiter may choose different engines/models from the same connection for different seat assignments when their affinity differs by role or work requirement.
+The Recruiter may choose different engines/models from that same connection for different Director assignments when their role/work affinity differs.
 
-Therefore one human/configuration owner does not imply one fixed model, and one model/connection may still occupy multiple selected seats.
+Therefore one user does not imply one fixed model for all 12 recruited Directors.
 
-## Multiple candidates and periodic reweighting
+## Multiple occupants and periodic reweighting
 
-When the host supplies two or more eligible occupant candidates, the Recruiter must support reusable weighting/ranking rather than treating every occupant as permanently equivalent.
+When the host supplies two or more eligible occupant candidates, the Recruiter supports reusable weighting/ranking rather than treating every occupant as permanently equivalent.
 
-Weights are expected to be refreshed periodically so recruitment can adapt to changing capability, availability and observed results. Core exposes this as a configurable scheduling/policy boundary rather than hard-coding a product cadence.
+Core exposes periodic reevaluation as a configurable policy boundary rather than hard-coding a commercial cadence. Product-specific weekly/monthly policy belongs to consuming products.
 
-A consuming product may choose a weekly, monthly or other bounded reevaluation interval. The exact default cadence is intentionally deferred until product evidence supports one.
+## Roles not subject to top-12 recruitment
+
+The top-12 competition applies only to D01-D25.
+
+Other canonical roles are activated by the orchestration/governance contract rather than ranked against the Directors:
+
+- Elders enter when their Council stage applies;
+- the Chief Delivery Officer / flow role observes relevant transitions by default;
+- VP and Strategist synthesis follows the institutional flow;
+- transversal and dynamic roles execute when their task contracts require them.
+
+These roles may still require connector/occupant resolution, but they are not candidates for one of the 12 Director slots.
 
 ## Candidate-set boundary
 
-Core separates **where occupants/candidates come from** from **how seat/occupant assignments are ranked**.
+Core separates **where occupants come from** from **which Director assignments are strongest**.
 
-The host supplies an already-authorized occupant candidate set. Core may rank/reweight that set and combine it with the 72 canonical seats, but it must not decide who is a valid enterprise user, who is a social contact or who belongs to a manually selected team.
+The host supplies an already-authorized occupant candidate set. Core may rank/reweight that set and combine it with D01-D25, but it does not decide who is a valid Enterprise user, social contact or manually selected team member.
 
 Conceptually:
 
 ```text
-Host-specific occupant source
-        |
-        v
 Authorized occupant candidates
-        |
-        +--------------------+
-                             |
-72 canonical seat profiles  |
-        |                    |
-        +---------+----------+
-                  |
-                  v
-            Core Recruiter
-     seat fit + occupant fit
-                  |
-                  v
-72 available seat/occupant assignments
-                  |
-                  v
-       top 12 assignment cohort
-                  |
-                  v
-        orchestrated execution
+            |
+            +--------------------------+
+                                       |
+25 canonical Director profiles        |
+            |                          |
+            +------------+-------------+
+                         |
+                         v
+                   Core Recruiter
+                seat fit + occupant fit
+                         |
+                         v
+              25 Director assignments
+                         |
+                         v
+              top 12 Director cohort
+                         |
+                         v
+               institutional flow
 ```
-
-A host may deliberately pre-scope the occupant set. Core does not need to know whether that scope was produced automatically or by an explicit product-level choice.
 
 ## Public abstraction requirements
 
 Exact type names remain an implementation decision, but the public contract requires equivalents of:
 
-- a task/request descriptor suitable for recruitment;
-- stable canonical seat identity and task profile;
-- an opaque occupant/candidate identity;
-- one or more connector/model options associated with an occupant;
-- capability/availability metadata needed for affinity evaluation;
-- a seat/occupant assignment candidate;
-- an inspectable affinity/ranking result;
-- a **12-assignment recruitment result**;
-- a policy boundary for periodic reevaluation; and
-- an observable Recruiter execution state.
+- work/request descriptor;
+- stable canonical Director identity and profile;
+- opaque occupant/candidate identity;
+- connector/model options associated with an occupant;
+- capability/availability metadata;
+- Director assignment candidate;
+- inspectable affinity/ranking result;
+- **12-Director recruitment result**;
+- configurable reevaluation policy; and
+- observable Recruiter execution state.
 
-The public API must remain provider-neutral.
+The public API remains provider-neutral.
 
-## Relationship to the 72-seat runtime
+## Relationship to the 72-seat institution
 
-The canonical Core institution remains exactly 72 seats, but a work request does **not** execute all 72.
+The institution contains 72 canonical seats. The Recruiter does **not** pick 12 of 72.
 
-The Recruiter selects 12 seat/occupant assignments for the requested work. The remaining 60 seats remain available/idle for that request.
+It picks 12 of the **25 Directors**. Governance, synthesis, transversal and flow roles remain available and participate according to their own contracts.
 
-If recruitment is disabled, the host must provide a valid 12-assignment cohort directly.
+The 12 Directors also do not imply 12 simultaneous calls: runtime scheduling remains bounded, dependency-aware and stage-aware.
 
-The 12 selected agents do not imply 12 simultaneous external calls. Runtime scheduling may be sequential, bounded-parallel or staged fan-out/fan-in.
+## Validation required before implementation is complete
 
-## Privacy and product boundary
+Tests must demonstrate that:
 
-Core must not require or persist product-specific concepts such as:
-
-- tenant identifiers;
-- enterprise user directories;
-- social/contact graphs;
-- private per-person weighting semantics;
-- product-specific manual team assignment rules; or
-- private credential ownership relationships.
-
-Those belong to consuming products. Core receives only the minimum generic occupant/connector information needed to perform recruitment.
-
-## Validation required before implementation is called complete
-
-At minimum, tests must demonstrate that:
-
-1. the canonical seat pool contains exactly 72 stable seats;
-2. a valid work request produces exactly 12 selected seat/occupant assignments;
-3. selected assignments use 12 distinct canonical seats;
-4. one occupant/connection may validly occupy all 72 candidates and multiple selected seats;
-5. one connection exposing multiple models can produce different model choices by seat/task affinity;
+1. exactly 25 Director candidates exist for recruitment;
+2. a valid recruited work request selects exactly 12 distinct Director seats;
+3. no Elder, VP, Strategist, transversal or flow seat can consume one of those 12 Director slots;
+4. one occupant may validly occupy all 25 Director candidates and multiple selected Directors;
+5. one connection exposing multiple models can produce different model choices by Director/work affinity;
 6. two or more occupants can produce deterministic, inspectable ranked/weighted results for a fixed input;
-7. periodic reevaluation is controlled through an injected/configurable policy rather than a hard-coded product cadence;
-8. a host-supplied pre-scoped candidate set is respected; and
-9. no product-specific identity or relationship model is required by the public Recruiter contract.
+7. host-supplied candidate scoping is respected; and
+8. no product-specific identity or relationship model is required by the public Recruiter contract.
