@@ -10,7 +10,7 @@ Decision Foundry Core supports both automatic `best person for the job` staffing
 
 When a host has more than one eligible AI/connector candidate, it may explicitly bind a chosen candidate to one or more of the 72 canonical seats instead of allowing the Recruiter to choose automatically for those seats.
 
-This is a public Core capability. Core expresses the choice in provider-neutral terms such as seat + occupant candidate/connector. A consuming product may present the same operation with richer product language, such as assigning a team member to a role.
+This is a public Core capability. Core expresses the choice in provider-neutral terms such as seat + concrete occupant candidate/connector. A consuming product may present the same operation with richer product language, such as assigning a team member to a role.
 
 ## Staffing precedence
 
@@ -45,12 +45,31 @@ The public binding unit is conceptually:
 ```text
 CanonicalSeatId
         +
-OccupantCandidateId / ConnectorId
+Concrete OccupantCandidate
         =
 ExplicitSeatBinding
 ```
 
-If a host models several independently selectable models/deployments behind one connection, the binding may identify the concrete candidate required by that host's connector abstraction. Core does not prescribe a vendor-specific identity shape.
+An `OccupantCandidate` identifies the concrete selectable AI endpoint used for execution, not merely a provider family name. Depending on the connector abstraction it may include equivalents of:
+
+- connection identity;
+- provider/family identity;
+- concrete model/version identity;
+- deployment identity when applicable; and
+- opaque owner/perspective identity supplied by the host.
+
+This allows different model generations or deployments from the same provider to occupy different seats.
+
+For example, a Core host may explicitly choose:
+
+```text
+Council/Elder seats -> candidate using model/version A
+Director seats      -> candidate using model/version B
+```
+
+or the reverse. Core does not privilege a newer/larger model merely because it is newer/larger; explicit binding is a valid host decision.
+
+If several models/deployments are available behind one account/connection, they remain independently selectable candidates when the host exposes them that way.
 
 ## Eligibility still applies
 
@@ -111,7 +130,7 @@ These decisions must not be conflated.
 Core knows only:
 
 - seat identity;
-- candidate/connector identity;
+- concrete candidate/connector/model/deployment identity;
 - explicit-vs-automatic selection provenance;
 - optional scorecard assessment evidence; and
 - binding scope/version.
@@ -133,8 +152,9 @@ Tests must demonstrate at least that:
 1. an explicit eligible binding wins over automatic Recruiter selection for that seat;
 2. unbound seats continue to use automatic scorecard staffing;
 3. fully automatic, fully explicit and mixed staffing are all valid;
-4. an explicit candidate outside the eligible universe is rejected rather than silently accepted;
-5. scorecard affinity may be preserved for an explicitly bound occupant without changing the explicit choice;
-6. selection provenance distinguishes automatic from explicit staffing;
-7. changing a current binding does not rewrite completed-run history; and
-8. explicit seat binding does not automatically force a Director into the 12-of-25 work cohort.
+4. different versions/deployments of one provider can be exposed as independent candidates and bound to different seats;
+5. an explicit candidate outside the eligible universe is rejected rather than silently accepted;
+6. scorecard affinity may be preserved for an explicitly bound occupant without changing the explicit choice;
+7. selection provenance distinguishes automatic from explicit staffing;
+8. changing a current binding does not rewrite completed-run history; and
+9. explicit seat binding does not automatically force a Director into the 12-of-25 work cohort.
