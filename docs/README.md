@@ -7,13 +7,16 @@ Decision Foundry Core is the public reusable engine for the canonical 72-seat De
 - [Core runtime contract](architecture/core-runtime-contract.md) — the 72-seat institution, 12-of-25 Director cohort, provider-neutral connector boundary and minimal observability/sample contract.
 - [Canonical seat profile contract](architecture/seat-profile-contract.md) — executable role semantics used to staff all 72 seats and preserve the distinct reason each seat exists.
 - [Canonical 100-statement seat scorecard](architecture/seat-scorecard-contract.md) — exactly 100 positive statements per seat, 0–100 occupant responses from the bound user perspective and equal-weight arithmetic affinity scoring.
-- [Recruiter contract](architecture/recruiter-contract.md) — two-stage `best person for the job` mechanism: score and staff all 72 seats from eligible occupants, then select 12 of the 25 staffed Directors for a work request.
+- [Explicit seat binding contract](architecture/seat-binding-contract.md) — optional host/user choice of the concrete connector/model/version that occupies a seat, including mixed manual + automatic staffing.
+- [Recruiter contract](architecture/recruiter-contract.md) — two-stage `best person for the job` mechanism: score and staff all unbound seats from eligible occupants, then select 12 of the 25 staffed Directors for a work request.
 
 ## Recruiter boundary
 
 The public Recruiter is a composition capability, not a 73rd canonical Core seat.
 
-It does not require its own model connection merely to operate. In the trivial single-candidate case, the same occupant may fill all 72 seats. When multiple occupant candidates are available, Core evaluates each candidate against the same version of the seat's 100-statement scorecard and selects the highest arithmetic-mean affinity.
+It does not require its own model connection merely to operate. In the trivial single-candidate case, the same occupant may fill all 72 seats. When multiple occupant candidates are available, Core evaluates each candidate against the same version of the seat's 100-statement scorecard and selects the highest arithmetic-mean affinity for every seat that is not explicitly bound.
+
+A host may expose several concrete model versions/deployments from the same provider as independent candidates and bind them differently by seat. The staffing snapshot preserves the exact candidate/model/version and whether it was selected automatically or explicitly.
 
 The complete 100-answer vector and scorecard version are evidence; a final percentage alone is not sufficient for reconstruction.
 
