@@ -6,20 +6,42 @@
 
 ## Purpose
 
-Decision Foundry Core may expose an **optional reusable Recruiter capability** that helps a host choose the most appropriate AI/model connector candidates for a task.
+Decision Foundry Core may expose an **optional reusable Recruiter capability** that forms the best 12-agent execution cohort for a work request from the canonical 72-seat institutional pool.
 
-The Recruiter is not one of the 72 canonical Decision Foundry seats and is not required to run the 72-seat institution. It is an optional composition capability for hosts that have more than one usable connector candidate or want automatic model selection.
+The Recruiter is not one of the 72 canonical Decision Foundry seats. It is a composition capability that evaluates both **seat fit** and **occupant fit**.
 
-Core owns only the generic recruitment mechanism. It must not know whether candidates represent enterprise users, social contacts, service accounts, providers, subscriptions or another product-specific identity model.
+Core owns only the generic recruitment mechanism. It must not know whether occupants represent enterprise users, social contacts, service accounts, providers, subscriptions or another product-specific identity model.
+
+## Recruitment unit: seat + occupant
+
+The atomic candidate evaluated by the Recruiter is not a seat alone and not a model/connector alone.
+
+It is the combination:
+
+```text
+seat role/task profile
+        +
+occupant connector/model profile
+        =
+agent assignment candidate
+```
+
+A single occupant may be eligible for many or all 72 seats. For example, in the smallest community deployment one AI/model connection may occupy all 72 seat candidates while the seat roles remain logically distinct.
 
 ## Default behavior: automatic recruitment by affinity
 
-The default Recruiter mode is automatic.
+Given a work request and a host-supplied authorized occupant/candidate set, the Recruiter:
 
-Given a task and a candidate set supplied by the host, the Recruiter evaluates candidate affinity for that task and returns a ranked/weighted selection that the host can use to bind connectors to the 72 seats.
+1. evaluates occupant/model affinity against the role and task profile of the 72 canonical seats;
+2. forms the available seat/occupant assignment candidates;
+3. ranks those assignments for the specific work request; and
+4. selects **exactly 12 distinct canonical seats with their chosen occupants** as the execution cohort.
 
-Affinity may consider only information that is legitimately exposed through the public candidate contract, such as:
+The selected cohort is therefore a set of 12 seat/occupant pairs.
 
+Affinity may consider only information legitimately exposed through public contracts, such as:
+
+- the canonical seat role/task profile;
 - model/provider capabilities;
 - declared modality or tool support;
 - availability/health;
@@ -33,66 +55,80 @@ The exact scoring formula is deliberately not fixed until implementation evidenc
 
 A single configured AI connection may expose more than one usable engine/model.
 
-For example, a host connector can expose several model endpoints behind one account or platform connection. In that case the Recruiter may choose the engine/model with the strongest affinity for the current task while the same host connection remains the credential/configuration boundary.
+The Recruiter may choose different engines/models from the same connection for different seat assignments when their affinity differs by role or work requirement.
 
-Therefore the smallest useful recruited composition may still have only one human/configuration owner while the Recruiter selects among multiple models available through that connection.
+Therefore one human/configuration owner does not imply one fixed model, and one model/connection may still occupy multiple selected seats.
 
 ## Multiple candidates and periodic reweighting
 
-When the host supplies two or more eligible connector candidates, the Recruiter must support a reusable weighting/ranking model rather than treating every candidate as permanently equivalent.
+When the host supplies two or more eligible occupant candidates, the Recruiter must support reusable weighting/ranking rather than treating every occupant as permanently equivalent.
 
-Weights are expected to be refreshed periodically so that recruitment can adapt to changing capability, availability and observed results. Core must expose this as a configurable scheduling/policy boundary rather than hard-code a product cadence.
+Weights are expected to be refreshed periodically so recruitment can adapt to changing capability, availability and observed results. Core exposes this as a configurable scheduling/policy boundary rather than hard-coding a product cadence.
 
 A consuming product may choose a weekly, monthly or other bounded reevaluation interval. The exact default cadence is intentionally deferred until product evidence supports one.
 
 ## Candidate-set boundary
 
-Core must separate **where candidates come from** from **how candidates are ranked**.
+Core separates **where occupants/candidates come from** from **how seat/occupant assignments are ranked**.
 
-The host supplies an already-authorized candidate set. Core may rank/reweight that set, but it must not decide who is a valid enterprise user, who is a social contact or who belongs to a manually selected team.
+The host supplies an already-authorized occupant candidate set. Core may rank/reweight that set and combine it with the 72 canonical seats, but it must not decide who is a valid enterprise user, who is a social contact or who belongs to a manually selected team.
 
 Conceptually:
 
 ```text
-Host-specific candidate source
+Host-specific occupant source
         |
         v
-Authorized candidate set
+Authorized occupant candidates
         |
-        v
-Core Recruiter
-(task affinity + ranking/weighting)
-        |
-        v
-Connector selection/resolution
-        |
-        v
-72 canonical seats
+        +--------------------+
+                             |
+72 canonical seat profiles  |
+        |                    |
+        +---------+----------+
+                  |
+                  v
+            Core Recruiter
+     seat fit + occupant fit
+                  |
+                  v
+72 available seat/occupant assignments
+                  |
+                  v
+       top 12 assignment cohort
+                  |
+                  v
+        orchestrated execution
 ```
 
-A host may deliberately pre-scope the candidate set. Core does not need to know whether that scope was produced automatically or by an explicit product-level choice.
+A host may deliberately pre-scope the occupant set. Core does not need to know whether that scope was produced automatically or by an explicit product-level choice.
 
 ## Public abstraction requirements
 
 Exact type names remain an implementation decision, but the public contract requires equivalents of:
 
 - a task/request descriptor suitable for recruitment;
-- an opaque candidate identity;
-- one or more connector/model options associated with a candidate;
+- stable canonical seat identity and task profile;
+- an opaque occupant/candidate identity;
+- one or more connector/model options associated with an occupant;
 - capability/availability metadata needed for affinity evaluation;
-- a ranked or weighted recruitment result;
+- a seat/occupant assignment candidate;
+- an inspectable affinity/ranking result;
+- a **12-assignment recruitment result**;
 - a policy boundary for periodic reevaluation; and
-- an observable Recruiter execution state when a host chooses to surface it.
+- an observable Recruiter execution state.
 
 The public API must remain provider-neutral.
 
 ## Relationship to the 72-seat runtime
 
-The canonical Core topology remains exactly 72 seats.
+The canonical Core institution remains exactly 72 seats, but a work request does **not** execute all 72.
 
-A host that does not enable recruitment can bind one connector to all 72 seats and never instantiate the Recruiter.
+The Recruiter selects 12 seat/occupant assignments for the requested work. The remaining 60 seats remain available/idle for that request.
 
-A host that enables recruitment may use the Recruiter to resolve which connector candidate or model should serve one or more seats. That does not add a 73rd canonical seat or change any `AgentSeatId`.
+If recruitment is disabled, the host must provide a valid 12-assignment cohort directly.
+
+The 12 selected agents do not imply 12 simultaneous external calls. Runtime scheduling may be sequential, bounded-parallel or staged fan-out/fan-in.
 
 ## Privacy and product boundary
 
@@ -105,15 +141,18 @@ Core must not require or persist product-specific concepts such as:
 - product-specific manual team assignment rules; or
 - private credential ownership relationships.
 
-Those belong to consuming products. Core receives only the minimum generic candidate/connector information needed to perform recruitment.
+Those belong to consuming products. Core receives only the minimum generic occupant/connector information needed to perform recruitment.
 
 ## Validation required before implementation is called complete
 
 At minimum, tests must demonstrate that:
 
-1. recruitment is optional and the 72-seat runtime still works without it;
-2. one connection exposing multiple models can be ranked by task affinity;
-3. two or more candidates can produce deterministic, inspectable ranked/weighted results for a fixed input;
-4. periodic reevaluation is controlled through an injected/configurable policy rather than a hard-coded product cadence;
-5. a host-supplied pre-scoped candidate set is respected; and
-6. no product-specific identity or relationship model is required by the public Recruiter contract.
+1. the canonical seat pool contains exactly 72 stable seats;
+2. a valid work request produces exactly 12 selected seat/occupant assignments;
+3. selected assignments use 12 distinct canonical seats;
+4. one occupant/connection may validly occupy all 72 candidates and multiple selected seats;
+5. one connection exposing multiple models can produce different model choices by seat/task affinity;
+6. two or more occupants can produce deterministic, inspectable ranked/weighted results for a fixed input;
+7. periodic reevaluation is controlled through an injected/configurable policy rather than a hard-coded product cadence;
+8. a host-supplied pre-scoped candidate set is respected; and
+9. no product-specific identity or relationship model is required by the public Recruiter contract.
