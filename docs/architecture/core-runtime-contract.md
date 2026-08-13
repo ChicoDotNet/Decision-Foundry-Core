@@ -10,7 +10,7 @@ Decision Foundry Core is intended to be a small reusable .NET library that lets 
 
 The public value proposition is deliberately simple: reference the DLL, provide one or more AI/model connectors, and run the 72-seat institution.
 
-Core must remain useful to a single developer or small team without requiring multi-user infrastructure, a recruiter component, tenant management, or private product services.
+Core must remain useful to a single developer or small team without requiring multi-user infrastructure, an enabled recruiter component, tenant management, or private product services.
 
 ## 72-seat contract
 
@@ -50,17 +50,25 @@ Decision Foundry Core DLL
 72 logical agent seats
 ```
 
-In this mode the same connector services all 72 seats. Core does **not** require a recruiter component to operate.
+In this mode the same connector services all 72 seats. Core does **not** require a Recruiter to operate.
 
 This operating mode is important for the open-source community because it makes the method usable without recreating enterprise identity, tenancy or user-connection infrastructure.
+
+## Optional recruitment capability
+
+Core may also expose the reusable [Recruiter contract](recruiter-contract.md).
+
+The Recruiter is **not** a 73rd canonical seat. It is an optional composition capability that can rank/select connector candidates by task affinity when a host has more than one usable model/connector option.
+
+A host that does not need recruitment can ignore this capability entirely. A host that enables it may use the Recruiter to resolve which connector/model should serve one or more of the 72 seats without changing their identities.
 
 ## Extensibility boundary
 
 Core must allow a host to replace connector resolution and orchestration composition without modifying the 72 canonical seat definitions.
 
-A host may therefore add product-specific participants or use a richer connector-selection policy, but those additions are outside the default Core topology and must not be required for ordinary Core use.
+A host may therefore add product-specific participants, provide an already-scoped candidate set or use a richer connector-selection policy. Those additions are outside the default 72-seat topology and must not be required for ordinary Core use.
 
-Core does not define private multi-user weighting policies or product-specific identity semantics.
+Core does not define private multi-user weighting semantics, identity rules, relationship graphs or product-specific team-selection behavior.
 
 ## Execution observability
 
@@ -73,6 +81,8 @@ At minimum, a sample must be able to distinguish each seat as:
 - `Completed`
 
 Richer outcome/error information may be exposed separately, but the basic monitor must remain understandable without domain-specific UI.
+
+If a host enables the optional Recruiter, its execution state should be observable separately from the 72 canonical seats.
 
 ## Reference sample
 
@@ -89,6 +99,8 @@ The sample is not a second product. Its purpose is only to demonstrate:
 3. starting an orchestration request; and
 4. displaying the 72 seat indicators as `Idle`, `Working` or `Completed`.
 
+A later sample may optionally demonstrate automatic recruitment among multiple connector/model candidates, but recruitment is not required to prove the base DLL contract.
+
 The first sample should favor the lowest-friction option that proves the DLL contract.
 
 ## What Core deliberately does not require
@@ -99,14 +111,15 @@ Core must remain independently usable without:
 - organization-specific identity directories;
 - one AI account per seat;
 - one human user per seat;
-- a recruiter participant;
-- private per-user weighting logic; or
+- an enabled Recruiter;
+- private per-user weighting logic;
+- social/contact graphs; or
 - a commercial UI.
 
 These are host/product concerns, not prerequisites for the public engine.
 
 ## Compatibility rule
 
-Future products may extend the Core composition, but they must consume the public 72-seat contract rather than require Core to understand private product strategy.
+Future products may extend the Core composition, but they must consume the public 72-seat and optional recruitment contracts rather than require Core to understand private product strategy.
 
-The public library remains the reusable engine; product-specific composition remains outside this repository.
+The public library remains the reusable engine; product-specific candidate sources, identity semantics and composition remain outside this repository.
