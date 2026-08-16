@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "catalogVersion": "1.0.0-dev.1",
+  "complete": false,
+  "canonicalSeatCount": 72,
+  "statementsPerSeat": 100,
+  "expectedCompleteStatementCount": 7200,
+  "materializedSeats": [
+    "D07"
+  ],
+  "materializedSeatCount": 1,
+  "materializedStatementCount": 100,
+  "authoringModel": "professional-doctorate-projection",
+  "iteration": "S01",
+  "iterationPlanCount": 19
+}
