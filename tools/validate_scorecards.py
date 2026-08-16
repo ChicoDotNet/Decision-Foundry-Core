@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
+from collections import Counter
 import json
 from pathlib import Path
 import sys
@@ -32,18 +33,25 @@ def validate_scorecard(path: Path) -> int:
     if data.get("statementCount") != 100:
         fail(f"{path}: statementCount must equal 100")
 
-    seen = set()
+    seen_ids = set()
+    seen_text = set()
     for ordinal, item in enumerate(statements, start=1):
         expected_id = f"{seat_id}-S{ordinal:03d}"
         if item.get("id") != expected_id:
             fail(f"{path}: expected stable id {expected_id}")
-        if expected_id in seen:
+        if expected_id in seen_ids:
             fail(f"{path}: duplicate statement id {expected_id}")
-        seen.add(expected_id)
+        seen_ids.add(expected_id)
 
         text = item.get("statement")
         if not isinstance(text, str) or not text.strip():
             fail(f"{path}: {expected_id} has no statement text")
+        normalized = " ".join(text.split()).casefold()
+        if normalized in seen_text:
+            fail(f"{path}: duplicate statement text at {expected_id}")
+        seen_text.add(normalized)
+        if not text.strip().startswith("I "):
+            fail(f"{path}: {expected_id} must be authored as a positive ideal-occupant criterion")
 
         source_subject = item.get("sourceSubject")
         if source_subject is not None and source_subject != f"{ordinal:03d}":
@@ -56,7 +64,8 @@ def validate_scorecard(path: Path) -> int:
     if not isinstance(provenance, dict):
         fail(f"{path}: scorecard provenance is required")
 
-    if data.get("authoringModel") == "professional-doctorate-projection":
+    authoring_model = data.get("authoringModel")
+    if authoring_model == "professional-doctorate-projection":
         if provenance.get("curriculumSubjectCount") != 100:
             fail(f"{path}: doctorate-backed scorecards require 100 source subjects")
         for ordinal, item in enumerate(statements, start=1):
@@ -65,6 +74,46 @@ def validate_scorecard(path: Path) -> int:
                     f"{path}: doctorate-backed {seat_id} statement {ordinal:03d} "
                     "must trace to the matching subject"
                 )
+            if item.get("sourceDimension") is not None:
+                fail(f"{path}: doctorate-backed statements must not masquerade as dimensional projections")
+
+    elif authoring_model == "seat-contract-dimensional-projection":
+        dimensions = data.get("criterionDimensions")
+        if not isinstance(dimensions, list) or len(dimensions) != 10:
+            fail(f"{path}: dimensional scorecards require exactly 10 criterionDimensions")
+
+        dimension_ids = []
+        for index, dimension in enumerate(dimensions, start=1):
+            expected_dimension_id = f"{seat_id}-{index:02d}"
+            if not isinstance(dimension, dict) or dimension.get("id") != expected_dimension_id:
+                fail(f"{path}: expected criterion dimension {expected_dimension_id}")
+            if not isinstance(dimension.get("name"), str) or not dimension["name"].strip():
+                fail(f"{path}: {expected_dimension_id} requires a name")
+            dimension_ids.append(expected_dimension_id)
+
+        counts = Counter()
+        for item in statements:
+            if item.get("sourceSubject") is not None:
+                fail(f"{path}: contract-projected statements must not claim doctorate subject provenance")
+            source_dimension = item.get("sourceDimension")
+            if source_dimension not in dimension_ids:
+                fail(f"{path}: {item.get('id')} has invalid sourceDimension {source_dimension!r}")
+            counts[source_dimension] += 1
+
+        for dimension_id in dimension_ids:
+            if counts[dimension_id] != 10:
+                fail(
+                    f"{path}: {dimension_id} must contribute exactly 10 statements "
+                    f"(actual={counts[dimension_id]})"
+                )
+
+        if provenance.get("professionalDoctorateStatus") != "not-yet-materialized":
+            fail(
+                f"{path}: dimensional v1 scorecards must explicitly declare that the "
+                "professional doctorate is not yet materialized"
+            )
+    else:
+        fail(f"{path}: unsupported authoringModel {authoring_model!r}")
 
     return len(statements)
 
