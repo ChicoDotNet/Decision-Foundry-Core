@@ -33,7 +33,7 @@ For those seats, the approved interim v1 authoring model is:
 
 The resulting 100 statements are real versioned scorecard content, not placeholders. They are grounded in the institutional job contract and can be used as v1 assessment evidence.
 
-The guardrail is equally important: when the corresponding 100-subject professional doctorate is later completed, it may support a **new scorecard version** and a documented reassessment. It must not silently rewrite a v1 scorecard against which historical candidate evidence was already collected.
+When the corresponding 100-subject professional doctorate is later completed, it may support a **new scorecard version** and a documented reassessment. It must not silently rewrite a v1 scorecard against which historical candidate evidence was already collected.
 
 For this authoring model the validator requires:
 
@@ -74,9 +74,7 @@ The ordering front-loads production roles, then transversal/platform work, then 
 
 ## S01 — D07 golden scorecard
 
-`v1/D07.json` is the first complete scorecard and the authoring reference for profession-backed seats.
-
-Its D07 statements preserve D07's canonical mission — repeatable demand and revenue systems — while projecting the Marketing doctorate's scientific, buyer, commercial, creative, experience, measurement, AI, legal, financial, operational and doctoral standards into ideal-occupant criteria.
+`v1/D07.json` is the first complete scorecard and the authoring reference for profession-backed seats. Its statements preserve D07's canonical mission — repeatable demand and revenue systems — while projecting the Marketing doctorate's scientific, buyer, commercial, creative, experience, measurement, AI, legal, financial, operational and doctoral standards into ideal-occupant criteria.
 
 ## S02 — first four seat-contract projections
 
@@ -88,6 +86,17 @@ S02 materializes four additional complete scorecards:
 - **D15 Customer, Operator, and Field Reality** — direct field observation, customer/payment behavior, work-as-done, difficult-day feasibility, workarounds, burden/human factors, service reliability, field testing, contradiction/escalation and adoption learning.
 
 After S02 the catalog contains **5 / 72 complete scorecards and 500 / 7,200 canonical statements**.
+
+## S03 — strategy, finance, scaling, and evidence
+
+S03 materializes four additional complete scorecards:
+
+- **D02 Corporate Strategy** — strategic diagnosis, where-to-play, how-to-win, trade-offs/abandonment, capabilities, options, uncertainty, portfolio coherence, roadmap and strategic renewal;
+- **D08 Finance, Treasury, and Value Creation** — financial truth, liquidity, unit economics, scenarios, capital allocation, valuation, action/inaction economics, downside, business cases and financial governance;
+- **D10 Scaling, Profitability, and Independence** — next vital need, profit discipline, cash-funded growth, owner independence, operating rhythm, pruning, capacity/bottlenecks, accountability, repeatable growth and transferability;
+- **D21 Case File, Evidence, and Traceability** — case state, provenance, claim traceability, versioning, freshness/authority, evidence graph integrity, confidentiality, handoff, contradiction/invalidation and institutional memory.
+
+After S03 the catalog contains **9 / 72 complete scorecards and 900 / 7,200 canonical statements**.
 
 ## Validation
 
@@ -103,3 +112,4 @@ During partial construction, the manifest validates the materialized subset and 
 
 - **S01** exact-head workflow: success on `4d130e0db9fef425ce5752414ed4ee8b42378b88`.
 - **S02** functional acceptance: `Validate seat scorecards` succeeded on `eddec91bcdf5aa8334e295d76f22b007c65ddbed`, validating **5 scorecards / 500 statements**. Later commits only record that acceptance in catalog/documentation metadata.
+- **S03** acceptance is recorded only after the exact functional head containing all four scorecards and the `1.0.0-dev.3` manifest passes the same workflow.
