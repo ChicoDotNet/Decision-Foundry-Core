@@ -98,3 +98,8 @@ python3 tools/validate_scorecards.py
 ```
 
 During partial construction, the manifest validates the materialized subset and its declared counts. When `complete` becomes `true`, the validator additionally requires exactly 72 seat files and exactly 7,200 statements.
+
+### Accepted increments
+
+- **S01** exact-head workflow: success on `4d130e0db9fef425ce5752414ed4ee8b42378b88`.
+- **S02** functional exact-head workflow: success on `eddec91bcdf5aa8334e295d76f22b007c65ddbed`, validating **5 scorecards / 500 statements** before this documentation-only acceptance note.
