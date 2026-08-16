@@ -21,7 +21,28 @@ For a seat backed by a mature 100-subject professional doctorate, the preferred 
 
 The mapping is deliberately close to one-to-one because the doctorate already decomposes professional mastery into 100 coherent learning areas. A statement is not copied from the subject title: it distills the competence, evidence discipline, failure boundaries and mastery expected from an excellent practitioner.
 
-The mapping is a strong default, not an artificial rule for every seat. Transversal roles and Elders use their own canonical mission, authority, prohibitions, stage and criterion contracts when a 100-subject curriculum would be misleading.
+`v1/D07.json` is the golden reference for this model. Its primary curriculum provenance is the validated 100-subject **ASBN CaOS Marketing Specialist** professional doctorate.
+
+## Seat-contract dimensional projection
+
+A seat whose 100-subject professional doctorate has not yet been materialized must not fabricate curriculum provenance merely to satisfy the scorecard count.
+
+For those seats, the approved interim v1 authoring model is:
+
+`canonical mission + responsibilities + outputs + quality focus + decisive questions -> 10 professional criterion dimensions -> 10 positive statements per dimension`
+
+The resulting 100 statements are real versioned scorecard content, not placeholders. They are grounded in the institutional job contract and can be used as v1 assessment evidence.
+
+The guardrail is equally important: when the corresponding 100-subject professional doctorate is later completed, it may support a **new scorecard version** and a documented reassessment. It must not silently rewrite a v1 scorecard against which historical candidate evidence was already collected.
+
+For this authoring model the validator requires:
+
+- exactly 10 criterion dimensions;
+- stable dimension identities `<seat>-01` through `<seat>-10`;
+- exactly 10 statements sourced from each dimension;
+- no false `sourceSubject` provenance;
+- explicit `professionalDoctorateStatus: not-yet-materialized`;
+- 100 unique, non-empty positive ideal-occupant statements.
 
 ## Statement completion plan
 
@@ -51,11 +72,22 @@ The scorecard program is intentionally 19 increments. S01 establishes the golden
 
 The ordering front-loads production roles, then transversal/platform work, then executive synthesis and finally the four governance stages. Every increment must leave complete 100-statement scorecards; partially authored seats do not count as progress.
 
-## S01 golden scorecard
+## S01 — D07 golden scorecard
 
 `v1/D07.json` is the first complete scorecard and the authoring reference for profession-backed seats.
 
-Its primary curriculum provenance is the validated 100-subject **ASBN CaOS Marketing Specialist** professional doctorate. The D07 statements preserve D07's canonical mission — repeatable demand and revenue systems — while projecting the doctorate's scientific, buyer, commercial, creative, experience, measurement, AI, legal, financial, operational and doctoral standards into ideal-occupant criteria.
+Its D07 statements preserve D07's canonical mission — repeatable demand and revenue systems — while projecting the Marketing doctorate's scientific, buyer, commercial, creative, experience, measurement, AI, legal, financial, operational and doctoral standards into ideal-occupant criteria.
+
+## S02 — first four seat-contract projections
+
+S02 materializes four additional complete scorecards:
+
+- **D01 Problem and Decision Clarity** — decision framing, problem definition, scope, root causes, MECE decomposition, falsifiable hypotheses, evidence requirements, uncertainty, options and decision readiness;
+- **D04 Market, Customer, and Competition** — market framing, customer jobs, segmentation/ICP, behavioral demand, market sizing, competition, willingness to pay, research quality, market evolution and strategic synthesis;
+- **D06 Offer, Product, and Pricing** — outcome/value, product-offer fit, offer architecture, scope, differentiation, pricing, packaging, experimentation, build-buy-partner-kill and product economics/governance;
+- **D15 Customer, Operator, and Field Reality** — direct field observation, customer/payment behavior, work-as-done, difficult-day feasibility, workarounds, burden/human factors, service reliability, field testing, contradiction/escalation and adoption learning.
+
+After S02 the catalog contains **5 / 72 complete scorecards and 500 / 7,200 canonical statements**.
 
 ## Validation
 
