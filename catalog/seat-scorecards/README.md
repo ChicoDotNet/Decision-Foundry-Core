@@ -78,14 +78,23 @@ VP01-VP04 integrate their five reconciled Director portfolios without duplicatin
 
 ### S12 — VP05, S00, CDO, ELD-VAL-TRUTH
 
-- **VP05 Evidence, Contradiction and Integration** integrates D21-D25 while protecting provenance, falsification, impact/ethics, expert comparability, dissent and benefit realization. It completes the **5 / 5 Vice President layer**.
-- **S00 Strategist** integrates only Council-IV-approved VP opinions, resolves enterprise-level trade-offs, selects priorities and produces the final decision opinion while preserving dissent, conditions and material uncertainty. It does not approve irreversible or materially sensitive action for the Human Decision Owner.
-- **CDO Chief Delivery Officer** protects institutional flow through visibility and escalation. It detects blockers, missing owners, dependency loops, aging work, forgotten dissent and coordination overhead, but does not issue domain/moral/strategic opinions, vote in Councils, mutate evidence or approve decisions.
-- **ELD-VAL-TRUTH Validation Elder — Truth** evaluates whether specialized work is valid for Manager synthesis through the Truth criterion: evidence and claims must be accurate, traceable and not misleading. It issues one criterion-specific Council I vote with rationale and conditions without replacing or rewriting production analysis.
+- **VP05 Evidence, Contradiction and Integration** completes the five-VP layer while protecting provenance, falsification, impact/ethics, expert comparability, dissent and benefit realization.
+- **S00 Strategist** integrates only Council-IV-approved VP opinions and preserves Human Decision Owner authority.
+- **CDO Chief Delivery Officer** protects institutional flow through visibility and escalation without issuing substantive opinions, voting, mutating evidence or approving decisions.
+- **ELD-VAL-TRUTH Validation Elder — Truth** evaluates whether specialized work is valid for Manager synthesis through Truth and issues one criterion-specific Council I vote without replacing production analysis.
 
-The S12 boundary is intentionally non-collapsing: **VP05 integrates evidence-related Directors; S00 integrates approved VP opinions; CDO only governs procedural flow; ELD-VAL-TRUTH only evaluates Truth at Council I.** None inherits the authority of another seat.
+### S13 — Validation Elders: Wisdom, Justice, Mercy, Prudence
 
-After S12 the catalog contains **45 / 72 complete scorecards and 4,500 / 7,200 canonical statements**, with **25 / 25 Directors, 12 / 12 transversals and 5 / 5 Vice Presidents complete**. The Elder layer has begun at **1 / 28**.
+S13 extends Council I with four additional criterion seats while keeping each vote strictly criterion-specific:
+
+- **ELD-VAL-WISDOM** evaluates whether sound judgment is applied to the available evidence, including assumptions, alternatives, trade-offs, context, second-order consequences and uncertainty.
+- **ELD-VAL-JUSTICE** evaluates whether affected parties and obligations are treated fairly, including stakeholder coverage, obligations, benefit/burden allocation, consistency, representation and competing claims.
+- **ELD-VAL-MERCY** evaluates whether unnecessary harm is avoided while accountability is preserved, including foreseeability, avoidability, proportional response, vulnerability and remediation.
+- **ELD-VAL-PRUDENCE** evaluates timing, reversibility and foreseeable consequences, including readiness, option value, risk proportionality, sequencing, thresholds and stop conditions.
+
+All four seats answer the same Council I transition question — **is the specialized work valid for Manager synthesis?** — but each contributes only its assigned criterion vote. They preserve evidence, dissent, contradictions and invalidation conditions; they do not rewrite production analysis, claim the other criteria, issue the collective Council result, or approve the underlying business decision.
+
+After S13 the catalog contains **49 / 72 complete scorecards and 4,900 / 7,200 canonical statements**. The Elder layer stands at **5 / 28**, with five of seven Council I Validation criteria materialized.
 
 ## Validation
 
@@ -110,4 +119,5 @@ During partial construction the manifest validates the materialized subset and d
 - **S09:** functional success on `7ac13b8fbb091fb5ea43ac5576023b4f3587cfbf`; final documentation head `d164e2c223ca0df229bb61b1b5e466bd70df326f` also passed.
 - **S10:** functional success on `950315558c28eca88cf5f09980aff3cdef8ef088`; final exact-head documentation passed the same workflow.
 - **S11:** functional success on `3165ab7bd28c5c303c3b62d21aa92afb2857d154`; final exact head `582ddf0bc5cf570cd8ecc1a242e3601149cfd139` passed the same workflow.
-- **S12:** initial functional head `1dd4a48f6f661bd818335a0c31eef0d68b5e1d51` failed only because `materializedSeats` was not in the validator's required lexicographic order; no scorecard content defect was reported. Corrected functional head `7e99ea342aa07683e9346907d5516b07ddabf040` passed `Validate seat scorecards` and is the accepted S12 functional head.
+- **S12:** corrected functional head `7e99ea342aa07683e9346907d5516b07ddabf040` passed after fixing manifest ordering; final exact head `9ed93b4014fbe2ca992ec56ac44396c34500801e` also passed.
+- **S13:** accepted only after the exact functional head containing the four new Validation Elder scorecards, the `1.0.0-dev.13` manifest and this documentation passes `Validate seat scorecards`.
