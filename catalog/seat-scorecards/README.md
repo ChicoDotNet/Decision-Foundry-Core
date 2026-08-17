@@ -70,31 +70,28 @@ S01-S07 materialize D01-D25. D07 is the golden doctorate-backed projection; the 
 
 ### S08-S10 — all 12 transversals
 
-S08-S10 materialize T01-T12. Artifact selection, evidence management, question generation, research/retrieval, quantitative analysis, artifact generation/validation, contradiction detection, executive compression, context packaging, citation/provenance checking and quality gating remain distinct. S10 closes the transversal layer at **12 / 12 transversals and 3,700 cumulative statements**.
+S08-S10 materialize T01-T12 while preserving distinct platform authorities. S10 closes the transversal layer at **12 / 12 transversals and 3,700 cumulative statements**.
 
-### S11 — VP01, VP02, VP03, VP04
+### S11-S12 — executive integration and flow
 
-VP01-VP04 integrate their five reconciled Director portfolios without duplicating Director domain ownership. All VP inputs must already have passed Council III reconciliation. VP synthesis preserves governance conditions, evidence, uncertainty, contradiction and dissent; the VP opinion must pass Council IV before Strategist integration.
+S11 materializes VP01-VP04. S12 completes VP05, adds S00 Strategist and CDO, and begins the Elder layer with ELD-VAL-TRUTH. VP inputs require Council III reconciliation; VP outputs require Council IV approval before Strategist integration. The CDO observes flow and escalates blockers without issuing substantive opinions or votes.
 
-### S12 — VP05, S00, CDO, ELD-VAL-TRUTH
+### S13 — Council I Validation expansion
 
-- **VP05 Evidence, Contradiction and Integration** completes the five-VP layer while protecting provenance, falsification, impact/ethics, expert comparability, dissent and benefit realization.
-- **S00 Strategist** integrates only Council-IV-approved VP opinions and preserves Human Decision Owner authority.
-- **CDO Chief Delivery Officer** protects institutional flow through visibility and escalation without issuing substantive opinions, voting, mutating evidence or approving decisions.
-- **ELD-VAL-TRUTH Validation Elder — Truth** evaluates whether specialized work is valid for Manager synthesis through Truth and issues one criterion-specific Council I vote without replacing production analysis.
+S13 adds Validation Elders for Wisdom, Justice, Mercy and Prudence. All answer the Council I question — **is the specialized work valid for Manager synthesis?** — while each issues only its assigned criterion vote and preserves evidence, dissent, contradictions and invalidation conditions.
 
-### S13 — Validation Elders: Wisdom, Justice, Mercy, Prudence
+### S14 — Council I completion and Council II start
 
-S13 extends Council I with four additional criterion seats while keeping each vote strictly criterion-specific:
+S14 materializes four Elders:
 
-- **ELD-VAL-WISDOM** evaluates whether sound judgment is applied to the available evidence, including assumptions, alternatives, trade-offs, context, second-order consequences and uncertainty.
-- **ELD-VAL-JUSTICE** evaluates whether affected parties and obligations are treated fairly, including stakeholder coverage, obligations, benefit/burden allocation, consistency, representation and competing claims.
-- **ELD-VAL-MERCY** evaluates whether unnecessary harm is avoided while accountability is preserved, including foreseeability, avoidability, proportional response, vulnerability and remediation.
-- **ELD-VAL-PRUDENCE** evaluates timing, reversibility and foreseeable consequences, including readiness, option value, risk proportionality, sequencing, thresholds and stop conditions.
+- **ELD-VAL-STEWARDSHIP** evaluates whether money, time, authority and resources are used responsibly while specialized work is being validated for Manager synthesis.
+- **ELD-VAL-PURPOSE** evaluates whether the specialized work remains aligned with declared mission and intended outcome, including mission drift and purpose under trade-offs.
+- **ELD-CERT-TRUTH** evaluates whether Manager synthesis faithfully represents Specialist work through claim fidelity, evidence traceability, question coverage, omissions, duplication/distortion, conflicts, causality and priority fidelity.
+- **ELD-CERT-WISDOM** evaluates whether Manager synthesis faithfully preserves sound judgment, including evidence weighting, assumptions, alternatives, trade-offs, context, second-order consequences, uncertainty and priority judgment.
 
-All four seats answer the same Council I transition question — **is the specialized work valid for Manager synthesis?** — but each contributes only its assigned criterion vote. They preserve evidence, dissent, contradictions and invalidation conditions; they do not rewrite production analysis, claim the other criteria, issue the collective Council result, or approve the underlying business decision.
+S14 closes **Council I Validation at 7 / 7 criteria** and begins **Council II Certification at 2 / 7 criteria**. Validation and Certification remain intentionally distinct: Council I asks whether specialized work is valid for Manager synthesis; Council II asks whether Manager synthesis faithfully represents Specialist work before a Director opinion. Each Elder issues one criterion-specific vote only; no Elder rewrites production analysis, claims another criterion, emits the collective Council result or approves the underlying business decision.
 
-After S13 the catalog contains **49 / 72 complete scorecards and 4,900 / 7,200 canonical statements**. The Elder layer stands at **5 / 28**, with five of seven Council I Validation criteria materialized.
+After S14 the catalog contains **53 / 72 complete scorecards and 5,300 / 7,200 canonical statements**. The Elder layer stands at **9 / 28**.
 
 ## Validation
 
@@ -120,4 +117,5 @@ During partial construction the manifest validates the materialized subset and d
 - **S10:** functional success on `950315558c28eca88cf5f09980aff3cdef8ef088`; final exact-head documentation passed the same workflow.
 - **S11:** functional success on `3165ab7bd28c5c303c3b62d21aa92afb2857d154`; final exact head `582ddf0bc5cf570cd8ecc1a242e3601149cfd139` passed the same workflow.
 - **S12:** corrected functional head `7e99ea342aa07683e9346907d5516b07ddabf040` passed after fixing manifest ordering; final exact head `9ed93b4014fbe2ca992ec56ac44396c34500801e` also passed.
-- **S13:** accepted only after the exact functional head containing the four new Validation Elder scorecards, the `1.0.0-dev.13` manifest and this documentation passes `Validate seat scorecards`.
+- **S13:** functional success on `2f0e2a758c8af94ff176709d35cf162515de0b60`; acceptance-marker exact head `0e35f404beb3f64b9a814fca1cfabc65089ac0be` also passed.
+- **S14:** accepted only after the exact functional head containing the four new Elder scorecards, the `1.0.0-dev.14` manifest and this documentation passes `Validate seat scorecards`.
