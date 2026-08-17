@@ -27,11 +27,15 @@ For a seat backed by a mature 100-subject professional doctorate:
 
 A seat whose 100-subject professional doctorate has not yet been materialized must not fabricate curriculum provenance.
 
-`canonical mission + responsibilities + outputs + quality focus + decisive questions -> 10 professional criterion dimensions -> 10 positive statements per dimension`
+For Directors with a decisive-question catalog, the pattern is:
 
-These are real versioned v1 criteria, not placeholders. A later doctorate may justify a new scorecard version and reassessment, but must not silently rewrite historical v1 evidence.
+`canonical seat contract + decisive questions -> 10 professional criterion dimensions -> 10 positive statements per dimension`
 
-The validator requires exactly 10 dimensions, stable dimension IDs, exactly 10 statements per dimension, no false `sourceSubject` provenance, explicit `professionalDoctorateStatus: not-yet-materialized`, and 100 unique positive `I ...` statements.
+For transversal seats, which do not have a seat-specific decisive-question catalog, the pattern is:
+
+`canonical transversal contract + outputs + quality focus + permanent skill boundaries -> 10 professional criterion dimensions -> 10 positive statements per dimension`
+
+The resulting statements are real versioned v1 criteria, not placeholders. A later doctorate may justify a new scorecard version and reassessment, but must not silently rewrite historical v1 evidence.
 
 ## Statement completion plan
 
@@ -61,34 +65,22 @@ Every increment must leave complete 100-statement scorecards; partially authored
 
 ## Materialized increments
 
-### S01 — D07
-Marketing, Sales, and Revenue: golden 100-subject doctorate projection.
+### S01-S07 — all 25 Directors
 
-### S02 — D01, D04, D06, D15
-Problem/decision clarity; market/customer/competition; offer/product/pricing; and customer/operator/field reality.
+S01-S07 materialize D01-D25. D07 is the golden doctorate-backed projection; the remaining Directors use the approved contract-dimensional model. S07 closes the complete Director layer at **25 / 25 Directors and 2,500 statements**.
 
-### S03 — D02, D08, D10, D21
-Corporate strategy; finance/treasury/value creation; scaling/profitability/independence; and case-file/evidence/traceability.
+### S08 — T01, T02, T03, T04
 
-### S04 — D03, D05, D11, D25
-Business model/purpose; investment/M&A/transferability; operations/processes; and integrated synthesis/benefits realization.
+S08 starts the transversal platform layer:
 
-### S05 — D12, D13, D14, D16
-Organization/people/adoption; projects/programs/transformation; minimal-effective governance/accountability; and enterprise architecture/Microsoft.
+- **T01 Artifact Selector** — decision need, artifact applicability, uncertainty reduction, risk coverage, actionability, dependencies, effort/value, evidence readiness, portfolio coherence, and selection governance;
+- **T02 Evidence Manager** — evidence identity/classification, provenance, versioning, deduplication, claim-evidence linkage, authorization, freshness, invalidation/contradiction handling, and institutional handoff;
+- **T03 Question Generator** — decision framing, artifact alignment, decisive-question design, coverage, falsifiability, ambiguity/decomposition, sequencing, adaptive questioning, gap detection, and question governance;
+- **T04 Research and Retrieval** — research scope, authorization, source/search strategy, internal and external retrieval, relevance, provenance/citations, freshness, source quality/triangulation, and reproducible handoff.
 
-### S06 — D09, D17, D18, D20
-Audit/tax/controls; data/analytics/AI; cybersecurity/privacy/continuity; and enterprise risk/resilience.
+Their boundaries are intentionally distinct: **T01 chooses what artifact work should be done; T02 governs evidence already acquired; T03 defines what must be answered; T04 retrieves authorized evidence.** None of them owns the business conclusion or approval authority.
 
-### S07 — D19, D22, D23, D24
-
-- **D19 Legal, Regulation, and Intellectual Property** — jurisdiction, obligations, contracts, liability, IP ownership, data/privacy law, corporate authority, employment law, regulatory readiness, and legal decision handoff.
-- **D22 Red Team and Falsification** — independence, assumption attack, counter-hypotheses, evidence stress tests, pre-mortems, adversarial scenarios, stop criteria, reversibility, dissent preservation, and falsification governance.
-- **D23 Sustainability, Impact, and Ethics** — stakeholder distribution, harm/rights, externalities, mission integrity, additionality, impact evidence, durability, fairness/access, safeguards, and ethical decision handoff.
-- **D24 Industry, Benchmarks, and Expert Knowledge** — industry structure, sector economics, comparables, benchmark quality, sector regulation, seasonality, failure patterns, expert elicitation, structural trends, and industry synthesis.
-
-S07 completes **all 25 Director scorecards**. Their authority boundaries remain distinct: D19 interprets legality and ownership; D22 independently attacks claims and assumptions; D23 evaluates stakeholder harm, ethics, impact, and mission drift; D24 supplies sector-specific evidence, comparability, and expert gaps.
-
-After S07 the catalog contains **25 / 72 complete scorecards and 2,500 / 7,200 canonical statements**.
+After S08 the catalog contains **29 / 72 complete scorecards and 2,900 / 7,200 canonical statements**.
 
 ## Validation
 
@@ -108,4 +100,5 @@ During partial construction the manifest validates the materialized subset and d
 - **S04:** functional success on `8b20e881bb4ea3f4a361dbd206686c70bb6954ed`; acceptance-marker head `a1a6e1abecc35ff0bf1cdde90180a773f03480b6` also passed.
 - **S05:** functional success on `82f166cb8afa7a88e08d6f90a870e1f107833df2`; acceptance-marker head `4a97ed025100e2e9b707238e10d96ab5010c4b9f` also passed.
 - **S06:** functional success on `ba5f01d67383be35881e9df9b4d7d33446aac4f6`; acceptance-marker head `271c459f53982f9d25bb11a4cd636a07148b588e` also passed.
-- **S07:** functional success on `843bf3a96d102731bd8249b0c4fbc132b11410df`; acceptance metadata records the same accepted functional head.
+- **S07:** functional success on `843bf3a96d102731bd8249b0c4fbc132b11410df`; subsequent metadata heads passed the same workflow.
+- **S08:** accepted only after the exact functional head containing T01-T04, the `1.0.0-dev.8` manifest, and this documentation passes `Validate seat scorecards`.
