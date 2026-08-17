@@ -71,16 +71,23 @@ S01-S07 materialize D01-D25. D07 is the golden doctorate-backed projection; the 
 
 ### S08 — T01, T02, T03, T04
 
-S08 starts the transversal platform layer:
+- **T01 Artifact Selector** chooses artifact work from decision need, applicability, uncertainty reduction, risk coverage, actionability, dependencies, effort/value, evidence readiness, portfolio coherence, and selection governance.
+- **T02 Evidence Manager** governs evidence identity, provenance, versions, deduplication, claim links, authorization, freshness, invalidation, contradictions, and handoff.
+- **T03 Question Generator** turns decision uncertainty into bounded decisive questions with coverage, falsifiability, sequencing, adaptive questioning, and gap detection.
+- **T04 Research and Retrieval** retrieves authorized internal and external evidence with scoped search, provenance, freshness, source quality, triangulation, and reproducible handoff.
 
-- **T01 Artifact Selector** — decision need, artifact applicability, uncertainty reduction, risk coverage, actionability, dependencies, effort/value, evidence readiness, portfolio coherence, and selection governance;
-- **T02 Evidence Manager** — evidence identity/classification, provenance, versioning, deduplication, claim-evidence linkage, authorization, freshness, invalidation/contradiction handling, and institutional handoff;
-- **T03 Question Generator** — decision framing, artifact alignment, decisive-question design, coverage, falsifiability, ambiguity/decomposition, sequencing, adaptive questioning, gap detection, and question governance;
-- **T04 Research and Retrieval** — research scope, authorization, source/search strategy, internal and external retrieval, relevance, provenance/citations, freshness, source quality/triangulation, and reproducible handoff.
+Their boundaries remain distinct: T01 chooses work; T02 governs acquired evidence; T03 defines what must be answered; T04 retrieves authorized evidence.
 
-Their boundaries are intentionally distinct: **T01 chooses what artifact work should be done; T02 governs evidence already acquired; T03 defines what must be answered; T04 retrieves authorized evidence.** None of them owns the business conclusion or approval authority.
+### S09 — T05, T06, T07, T08
 
-After S08 the catalog contains **29 / 72 complete scorecards and 2,900 / 7,200 canonical statements**.
+- **T05 Quantitative Analysis** — problem formulation, data fitness, reproducible calculation, model assumptions, statistical uncertainty, sensitivity/scenarios, numerical validation, interpretation limits, audit trail, and governed quantitative handoff.
+- **T06 Artifact Generator** — registry-contract interpretation, input readiness, schema conformance, evidence-bounded claims, question coverage, quantitative/citation integration, dissent preservation, usability, reproducible generation, and authority-safe handoff.
+- **T07 Artifact Validator** — contract resolution, schema, lineage, dependencies, question coverage, semantic quality, quantitative/citation checks, defect severity, regression/reproducibility, and validator authority boundaries.
+- **T08 Contradiction Detector** — contradiction definition, normalized claims, assumption conflicts, metric conflicts, version/temporal conflicts, recommendation conflicts, alternative explanations, materiality, contradiction lifecycle, and dissent-preserving handoff.
+
+The S09 chain is intentionally non-collapsing: **T05 analyzes; T06 generates; T07 validates without rewriting the artifact to make it pass; T08 detects and preserves contradictions without selecting the winner.** None of these roles gains domain, synthesis, certification, approval, or human-decision authority.
+
+After S09 the catalog contains **33 / 72 complete scorecards and 3,300 / 7,200 canonical statements**, with **8 / 12 transversal seats complete**.
 
 ## Validation
 
@@ -101,4 +108,5 @@ During partial construction the manifest validates the materialized subset and d
 - **S05:** functional success on `82f166cb8afa7a88e08d6f90a870e1f107833df2`; acceptance-marker head `4a97ed025100e2e9b707238e10d96ab5010c4b9f` also passed.
 - **S06:** functional success on `ba5f01d67383be35881e9df9b4d7d33446aac4f6`; acceptance-marker head `271c459f53982f9d25bb11a4cd636a07148b588e` also passed.
 - **S07:** functional success on `843bf3a96d102731bd8249b0c4fbc132b11410df`; subsequent metadata heads passed the same workflow.
-- **S08:** functional success on `1e543c17b770ba938c54e491f529c3536a972e00`; final metadata head must also pass the same exact-head workflow.
+- **S08:** functional success on `1e543c17b770ba938c54e491f529c3536a972e00`; final metadata head `9e219b3bec822f868ee749b883bdded75445970a` also passed.
+- **S09:** accepted only after the exact head containing T05-T08, the `1.0.0-dev.9` manifest, and this documentation passes `Validate seat scorecards`.
