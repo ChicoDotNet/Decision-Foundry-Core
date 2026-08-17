@@ -66,36 +66,32 @@ Every increment must leave complete 100-statement scorecards; partially authored
 
 ### S01-S07 — all 25 Directors
 
-S01-S07 materialize D01-D25. D07 is the golden doctorate-backed projection; the remaining Directors use the approved contract-dimensional model. S07 closes the Director layer at **25 / 25 Directors and 2,500 statements**.
+S01-S07 materialize D01-D25 and close the Director layer at **25 / 25 Directors and 2,500 statements**.
 
 ### S08-S10 — all 12 transversals
 
-S08-S10 materialize T01-T12 while preserving distinct platform authorities. S10 closes the transversal layer at **12 / 12 transversals and 3,700 cumulative statements**.
+S08-S10 materialize T01-T12 while preserving distinct platform authorities and close the transversal layer at **12 / 12 transversals and 3,700 cumulative statements**.
 
 ### S11-S12 — executive integration and flow
 
-S11 materializes VP01-VP04. S12 completes VP05, adds S00 Strategist and CDO, and begins the Elder layer with ELD-VAL-TRUTH. VP inputs require Council III reconciliation; VP outputs require Council IV approval before Strategist integration. The CDO observes flow and escalates blockers without issuing substantive opinions or votes.
+S11-S12 materialize VP01-VP05, S00 Strategist and CDO, then begin the Elder layer. VP inputs require Council III reconciliation; VP outputs require Council IV approval before Strategist integration. The CDO observes flow and escalates blockers without issuing substantive opinions or votes.
 
-### S13-S14 — Council I completion and Council II start
+### S13-S17 — Councils I-III
 
-S13 adds Validation Elders for Wisdom, Justice, Mercy and Prudence. S14 adds Validation Stewardship and Purpose, closing **Council I Validation at 7 / 7**, then begins Council II with Certification Truth and Wisdom.
+S13-S14 complete **Council I Validation 7 / 7** and start Council II. S15-S16 complete **Council II Certification 7 / 7** and start Council III. S17 completes **Council III Reconciliation 7 / 7**.
 
-### S15-S16 — Council II completion and Council III start
+### S18 — Council IV Approval start
 
-S15 adds Certification Elders for Justice, Mercy, Prudence and Stewardship. S16 adds Certification Purpose, closing **Council II Certification at 7 / 7**, and begins Council III with Reconciliation Truth, Wisdom and Justice.
+S18 materializes the first four Council IV Elders:
 
-### S17 — Council III Reconciliation complete
+- **ELD-APP-TRUTH** evaluates executive claim accuracy, traceability/freshness, material assumptions and unknowns, contradictions/dissent, quantitative/causal integrity, conditions and readiness claims.
+- **ELD-APP-WISDOM** evaluates evidence-weighted executive judgment, strategic trade-offs, alternatives and opportunity cost, second-order consequences, enterprise fit, uncertainty and escalation judgment.
+- **ELD-APP-JUSTICE** evaluates affected parties, rights and obligations, benefit/burden distribution, procedural fairness and voice, conflicts of interest, power asymmetry, remedies and recourse.
+- **ELD-APP-MERCY** evaluates foreseeable harm, vulnerability, necessity and proportionality, lower-harm alternatives, human burden, accountability without excess harm, remediation and recovery.
 
-S17 materializes the four remaining Reconciliation Elders:
+Council IV reviews the **Vice President → Strategist** transition and asks whether the recommendation deserves to reach the Strategist as an approved proposal. Each Elder issues only its assigned criterion vote. Only the collective Council IV process grants executive approval. Conditions, dissent, contradictions and invalidation conditions remain visible after progression. Irreversible or materially legal, financial, security, privacy, continuity or public action must be escalated as `ReadyForHumanDecision`; no individual Elder or the Strategist may substitute for the Human Decision Owner.
 
-- **ELD-REC-MERCY** evaluates cross-domain harm and burden, vulnerability, accountability without unnecessary harm, proportionality, lower-harm alternatives, dissent about harm and remediation burden.
-- **ELD-REC-PRUDENCE** evaluates timing, reversibility, foreseeable consequences, uncertainty triggers, sequencing, dependencies, downside paths and decision pace.
-- **ELD-REC-STEWARDSHIP** evaluates financial commitments, time and attention, authority, capacity, resource constraints, enterprise waste, sustainability and accountability for resource use.
-- **ELD-REC-PURPOSE** evaluates mission alignment, intended-outcome coherence, purpose evidence, mission drift, stakeholder/enterprise purpose, outcome measures and purpose invalidation conditions.
-
-Council III asks whether a **Director → Vice President** recommendation can coexist with enterprise constraints and other domains. Each Elder issues only its assigned criterion vote. Reconciliation preserves dissent, contradictions and invalidation conditions; it does not rewrite the Director recommendation, manufacture consensus, emit the collective Council result from one criterion, approve the business decision, or replace Council IV executive approval.
-
-After S17 the catalog contains **65 / 72 complete scorecards and 6,500 / 7,200 canonical statements**. The Elder layer stands at **21 / 28**. Council I Validation is **7 / 7**, Council II Certification is **7 / 7**, and Council III Reconciliation is **7 / 7**.
+After S18 the catalog contains **69 / 72 complete scorecards and 6,900 / 7,200 canonical statements**. The Elder layer stands at **25 / 28**. Council I Validation, Council II Certification and Council III Reconciliation remain **7 / 7 complete**; Council IV Approval stands at **4 / 7**.
 
 ## Validation
 
@@ -109,20 +105,7 @@ During partial construction the manifest validates the materialized subset and d
 
 ### Accepted increments
 
-- **S01:** success on `4d130e0db9fef425ce5752414ed4ee8b42378b88`.
-- **S02:** success on `eddec91bcdf5aa8334e295d76f22b007c65ddbed`.
-- **S03:** success on `f00e436556e6a2a3cedcf22d737d721a5bcddece` and subsequent metadata head.
-- **S04:** functional success on `8b20e881bb4ea3f4a361dbd206686c70bb6954ed`; acceptance-marker head `a1a6e1abecc35ff0bf1cdde90180a773f03480b6` also passed.
-- **S05:** functional success on `82f166cb8afa7a88e08d6f90a870e1f107833df2`; acceptance-marker head `4a97ed025100e2e9b707238e10d96ab5010c4b9f` also passed.
-- **S06:** functional success on `ba5f01d67383be35881e9df9b4d7d33446aac4f6`; acceptance-marker head `271c459f53982f9d25bb11a4cd636a07148b588e` also passed.
-- **S07:** functional success on `843bf3a96d102731bd8249b0c4fbc132b11410df`; subsequent metadata heads passed the same workflow.
-- **S08:** functional success on `1e543c17b770ba938c54e491f529c3536a972e00`; final metadata head `9e219b3bec822f868ee749b883bdded75445970a` also passed.
-- **S09:** functional success on `7ac13b8fbb091fb5ea43ac5576023b4f3587cfbf`; final documentation head `d164e2c223ca0df229bb61b1b5e466bd70df326f` also passed.
-- **S10:** functional success on `950315558c28eca88cf5f09980aff3cdef8ef088`; final exact-head documentation passed the same workflow.
-- **S11:** functional success on `3165ab7bd28c5c303c3b62d21aa92afb2857d154`; final exact head `582ddf0bc5cf570cd8ecc1a242e3601149cfd139` passed the same workflow.
-- **S12:** corrected functional head `7e99ea342aa07683e9346907d5516b07ddabf040` passed after fixing manifest ordering; final exact head `9ed93b4014fbe2ca992ec56ac44396c34500801e` also passed.
-- **S13:** functional success on `2f0e2a758c8af94ff176709d35cf162515de0b60`; acceptance-marker exact head `0e35f404beb3f64b9a814fca1cfabc65089ac0be` also passed.
-- **S14:** final accepted head recorded in the S15 predecessor history.
 - **S15:** functional success on `8215567acd6d7da473b780a8ffd20a630588dcde`; final acceptance-marker exact head `f4d313149400f1966df8a653bc626f7ff81040ee` also passed.
 - **S16:** functional success on `0bc2e89475b2800555bff3a9279825241cb6c817`; final acceptance-marker exact head `74f7d917d02fa3e0e03ba7919905af5295fd9c20` also passed.
-- **S17:** accepted only after the exact functional head containing the four new Reconciliation Elder scorecards, the `1.0.0-dev.17` manifest and this documentation passes `Validate seat scorecards`.
+- **S17:** functional success on `60f7374b95fbe505d34084cc230586ff3271861e`; final exact head `443c77442729264bcd0bf2fff38cd6bbfa425b0a` also passed.
+- **S18:** accepted only after the exact functional head containing the four new Approval Elder scorecards, the `1.0.0-dev.18` manifest and this documentation passes `Validate seat scorecards`.
