@@ -109,4 +109,4 @@ During partial construction the manifest validates the materialized subset and d
 - **S07:** functional success on `843bf3a96d102731bd8249b0c4fbc132b11410df`; subsequent metadata heads passed the same workflow.
 - **S08:** functional success on `1e543c17b770ba938c54e491f529c3536a972e00`; final metadata head `9e219b3bec822f868ee749b883bdded75445970a` also passed.
 - **S09:** functional success on `7ac13b8fbb091fb5ea43ac5576023b4f3587cfbf`; final documentation head `d164e2c223ca0df229bb61b1b5e466bd70df326f` also passed.
-- **S10:** accepted only after the exact functional head containing T09-T12, the `1.0.0-dev.10` manifest, and this documentation passes `Validate seat scorecards`.
+- **S10:** functional success on `950315558c28eca88cf5f09980aff3cdef8ef088`; acceptance-marker head must also pass the same exact-head workflow.
