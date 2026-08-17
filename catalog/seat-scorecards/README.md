@@ -76,22 +76,26 @@ S08-S10 materialize T01-T12 while preserving distinct platform authorities. S10 
 
 S11 materializes VP01-VP04. S12 completes VP05, adds S00 Strategist and CDO, and begins the Elder layer with ELD-VAL-TRUTH. VP inputs require Council III reconciliation; VP outputs require Council IV approval before Strategist integration. The CDO observes flow and escalates blockers without issuing substantive opinions or votes.
 
-### S13 — Council I Validation expansion
+### S13-S14 — Council I completion and Council II start
 
-S13 adds Validation Elders for Wisdom, Justice, Mercy and Prudence. All answer the Council I question — **is the specialized work valid for Manager synthesis?** — while each issues only its assigned criterion vote and preserves evidence, dissent, contradictions and invalidation conditions.
+S13 adds Validation Elders for Wisdom, Justice, Mercy and Prudence. S14 adds Validation Stewardship and Purpose, closing **Council I Validation at 7 / 7**, then begins Council II with Certification Truth and Wisdom. Validation asks whether specialized work is valid for Manager synthesis; Certification asks whether Manager synthesis faithfully represents Specialist work before a Director opinion.
 
-### S14 — Council I completion and Council II start
+### S15 — Council II Certification expansion
 
-S14 materializes four Elders:
+S15 adds Certification Elders for Justice, Mercy, Prudence and Stewardship. Each evaluates only its assigned criterion and preserves the Specialist record, Manager synthesis boundaries, dissent, contradictions and invalidation conditions. After S15, Council II stands at **6 / 7 criteria** and the catalog contains **57 / 72 scorecards and 5,700 / 7,200 statements**.
 
-- **ELD-VAL-STEWARDSHIP** evaluates whether money, time, authority and resources are used responsibly while specialized work is being validated for Manager synthesis.
-- **ELD-VAL-PURPOSE** evaluates whether the specialized work remains aligned with declared mission and intended outcome, including mission drift and purpose under trade-offs.
-- **ELD-CERT-TRUTH** evaluates whether Manager synthesis faithfully represents Specialist work through claim fidelity, evidence traceability, question coverage, omissions, duplication/distortion, conflicts, causality and priority fidelity.
-- **ELD-CERT-WISDOM** evaluates whether Manager synthesis faithfully preserves sound judgment, including evidence weighting, assumptions, alternatives, trade-offs, context, second-order consequences, uncertainty and priority judgment.
+### S16 — Council II completion and Council III start
 
-S14 closes **Council I Validation at 7 / 7 criteria** and begins **Council II Certification at 2 / 7 criteria**. Validation and Certification remain intentionally distinct: Council I asks whether specialized work is valid for Manager synthesis; Council II asks whether Manager synthesis faithfully represents Specialist work before a Director opinion. Each Elder issues one criterion-specific vote only; no Elder rewrites production analysis, claims another criterion, emits the collective Council result or approves the underlying business decision.
+S16 materializes four Elders:
 
-After S14 the catalog contains **53 / 72 complete scorecards and 5,300 / 7,200 canonical statements**. The Elder layer stands at **9 / 28**.
+- **ELD-CERT-PURPOSE** closes Council II by certifying whether Manager synthesis faithfully preserves declared mission, intended outcomes, purpose-relevant assumptions, trade-offs, mission drift, measures and invalidation conditions.
+- **ELD-REC-TRUTH** begins Council III by testing cross-domain claim accuracy, constraint evidence, contradictions, dependencies, quantitative/causal consistency, unknowns and evidence-supported coexistence boundaries.
+- **ELD-REC-WISDOM** evaluates whether sound judgment is applied to cross-domain trade-offs, uncertainty, alternatives, sequencing, reversibility, second-order consequences, constraint prioritization and escalation readiness.
+- **ELD-REC-JUSTICE** evaluates affected-party representation, obligations, burden/benefit distribution, procedural fairness, dissent, trade-off fairness and accountability across Director domains.
+
+The authority boundary is explicit: Council II reviews the **Manager → Director** transition for faithful synthesis; Council III reviews the **Director → Vice President** transition for enterprise coexistence. Reconciliation does not rewrite the Director recommendation, manufacture consensus, issue the collective Council result from one criterion, approve the business decision or replace Council IV executive approval.
+
+After S16 the catalog contains **61 / 72 complete scorecards and 6,100 / 7,200 canonical statements**. The Elder layer stands at **17 / 28**. Council I is **7 / 7**, Council II is **7 / 7**, and Council III is **3 / 7**.
 
 ## Validation
 
@@ -118,4 +122,6 @@ During partial construction the manifest validates the materialized subset and d
 - **S11:** functional success on `3165ab7bd28c5c303c3b62d21aa92afb2857d154`; final exact head `582ddf0bc5cf570cd8ecc1a242e3601149cfd139` passed the same workflow.
 - **S12:** corrected functional head `7e99ea342aa07683e9346907d5516b07ddabf040` passed after fixing manifest ordering; final exact head `9ed93b4014fbe2ca992ec56ac44396c34500801e` also passed.
 - **S13:** functional success on `2f0e2a758c8af94ff176709d35cf162515de0b60`; acceptance-marker exact head `0e35f404beb3f64b9a814fca1cfabc65089ac0be` also passed.
-- **S14:** accepted only after the exact functional head containing the four new Elder scorecards, the `1.0.0-dev.14` manifest and this documentation passes `Validate seat scorecards`.
+- **S14:** final accepted head recorded in the S15 predecessor history.
+- **S15:** functional success on `8215567acd6d7da473b780a8ffd20a630588dcde`; final acceptance-marker exact head `f4d313149400f1966df8a653bc626f7ff81040ee` also passed.
+- **S16:** accepted only after the exact functional head containing the four new Elder scorecards, the `1.0.0-dev.16` manifest and this documentation passes `Validate seat scorecards`.
