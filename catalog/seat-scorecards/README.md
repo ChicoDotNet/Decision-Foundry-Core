@@ -13,25 +13,25 @@ This directory owns the versioned public Decision Foundry Core catalog used to a
 - equal weighting in Scorecard v1;
 - source/provenance is preserved so a future revision can explain why a statement exists.
 
-## Professional-doctorate projection
+## Authoring models
 
-For a seat backed by a mature 100-subject professional doctorate, the preferred authoring pattern is:
+### Professional-doctorate projection
+
+For a seat backed by a mature 100-subject professional doctorate:
 
 `Subject N -> exit competence / mastery criterion -> positive occupant criterion -> Statement N`
 
-`v1/D07.json` is the golden reference for this model, projected from the validated 100-subject ASBN CaOS Marketing Specialist professional doctorate.
+`v1/D07.json` is the golden reference, projected from the validated 100-subject ASBN CaOS Marketing Specialist professional doctorate.
 
-## Seat-contract dimensional projection
+### Seat-contract dimensional projection
 
-A seat whose 100-subject professional doctorate has not yet been materialized must not fabricate curriculum provenance merely to satisfy the scorecard count.
-
-For those seats, the approved interim v1 authoring model is:
+A seat whose 100-subject professional doctorate has not yet been materialized must not fabricate curriculum provenance.
 
 `canonical mission + responsibilities + outputs + quality focus + decisive questions -> 10 professional criterion dimensions -> 10 positive statements per dimension`
 
-The resulting statements are real versioned assessment content, not placeholders. A later doctorate may justify a new scorecard version and reassessment, but must not silently rewrite historical v1 evidence.
+These are real versioned v1 criteria, not placeholders. A later doctorate may justify a new scorecard version and reassessment, but must not silently rewrite historical v1 evidence.
 
-The validator requires exactly 10 criterion dimensions, stable dimension identities, exactly 10 statements per dimension, no false `sourceSubject` provenance, explicit `professionalDoctorateStatus: not-yet-materialized`, and 100 unique positive `I ...` statements.
+The validator requires exactly 10 dimensions, stable dimension IDs, exactly 10 statements per dimension, no false `sourceSubject` provenance, explicit `professionalDoctorateStatus: not-yet-materialized`, and 100 unique positive `I ...` statements.
 
 ## Statement completion plan
 
@@ -61,9 +61,9 @@ Every increment must leave complete 100-statement scorecards; partially authored
 
 ## Materialized increments
 
-### S01 — D07 golden scorecard
+### S01 — D07
 
-Marketing, Sales, and Revenue: 100-subject doctorate projection preserving scientific, buyer, commercial, creative, experience, measurement, AI, legal, financial, operational, and doctoral standards.
+Marketing, Sales, and Revenue: golden 100-subject doctorate projection.
 
 ### S02 — D01, D04, D06, D15
 
@@ -79,14 +79,18 @@ Business model/purpose; investment/M&A/transferability; operations/processes; an
 
 ### S05 — D12, D13, D14, D16
 
-- **D12 Organization, People, and Adoption** — organization design, accountability, skills/capacity, incentives, change readiness, adoption behavior, leadership system, talent lifecycle, organizational evidence, and human-impact governance.
-- **D13 Projects, Programs, and Transformation** — transformation framing, increments, dependencies/critical path, estimation, stage gates, risk/change control, delivery flow, readiness, benefits realization, and institutional learning.
-- **D14 Governance, Performance, and Accountability** — minimal-effective governance, decision rights, accountable ownership, KPI architecture, management cadence, escalation/exceptions, commitment/benefit tracking, assurance, traceability, and governance adaptation.
-- **D16 Enterprise Architecture and Microsoft** — current/target/transition architecture, architecture requirements, cloud/platform, application/integration, build-buy-partner-retain-retire, Microsoft interoperability, reliability/operability, lifecycle economics, and evolutionary governance.
+Organization/people/adoption; projects/programs/transformation; minimal-effective governance/accountability; and enterprise architecture/Microsoft. D16 evaluates Microsoft on enterprise fit rather than vendor alignment alone.
 
-D14 is explicitly optimized for **minimal effective governance** rather than bureaucratic volume. D16 treats Microsoft as a strong enterprise ecosystem to evaluate on evidence; vendor alignment is not itself an architectural objective.
+### S06 — D09, D17, D18, D20
 
-After S05 the catalog contains **17 / 72 complete scorecards and 1,700 / 7,200 canonical statements**.
+- **D09 Audit, Tax, and Controls** — financial/reporting integrity, tax exposure, control design, operating effectiveness, audit evidence, compliance mapping, fraud/error risk, remediation, assurance independence, and continuous-controls governance.
+- **D17 Data, Analytics, and AI** — decision-centered problem framing, data fitness/provenance, analytics/measurement, automate-vs-augment choices, model/system evaluation, data/AI governance, responsible AI, MLOps, lifecycle economics, and production monitoring.
+- **D18 Cybersecurity, Privacy, and Continuity** — threat modeling, asset criticality, identity/least privilege, security architecture, privacy engineering, incident/crisis readiness, continuity objectives, recovery testing, supply-chain/cloud security, and evidence-based security governance.
+- **D20 Enterprise Risk and Resilience** — risk appetite, causal risk identification, inherent/residual exposure, scenario stress testing, treatment design, resilience/optionality, KRIs, risk governance, crisis/survival decisions, and portfolio adaptation.
+
+S06 intentionally separates four related authorities: **D09 asks whether obligations and controls are reliable; D17 asks whether data/AI improve decisions safely and economically; D18 asks how information and operations resist attack and recover; D20 asks which exposures threaten objectives or enterprise survival and how they should be governed.**
+
+After S06 the catalog contains **21 / 72 complete scorecards and 2,100 / 7,200 canonical statements**.
 
 ## Validation
 
@@ -104,4 +108,5 @@ During partial construction the manifest validates the materialized subset and d
 - **S02:** success on `eddec91bcdf5aa8334e295d76f22b007c65ddbed`.
 - **S03:** success on `f00e436556e6a2a3cedcf22d737d721a5bcddece` and subsequent metadata head.
 - **S04:** functional success on `8b20e881bb4ea3f4a361dbd206686c70bb6954ed`; acceptance-marker head `a1a6e1abecc35ff0bf1cdde90180a773f03480b6` also passed.
-- **S05:** accepted only after the exact head containing all four S05 scorecards, `1.0.0-dev.5` manifest, and this documentation passes `Validate seat scorecards`.
+- **S05:** functional success on `82f166cb8afa7a88e08d6f90a870e1f107833df2`; acceptance-marker head `4a97ed025100e2e9b707238e10d96ab5010c4b9f` also passed.
+- **S06:** accepted only after the exact functional head containing all four S06 scorecards, the `1.0.0-dev.6` manifest, and this documentation passes `Validate seat scorecards`.
