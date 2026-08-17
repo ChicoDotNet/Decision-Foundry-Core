@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "catalogVersion": "1.0.0-dev.4",
+  "catalogVersion": "1.0.0-dev.5",
   "complete": false,
   "canonicalSeatCount": 72,
   "statementsPerSeat": 100,
@@ -16,17 +16,21 @@
     "D08",
     "D10",
     "D11",
+    "D12",
+    "D13",
+    "D14",
     "D15",
+    "D16",
     "D21",
     "D25"
   ],
-  "materializedSeatCount": 13,
-  "materializedStatementCount": 1300,
+  "materializedSeatCount": 17,
+  "materializedStatementCount": 1700,
   "authoringModels": [
     "professional-doctorate-projection",
     "seat-contract-dimensional-projection"
   ],
-  "iteration": "S04",
+  "iteration": "S05",
   "iterationPlanCount": 19,
-  "lastAcceptedFunctionalHead": "8b20e881bb4ea3f4a361dbd206686c70bb6954ed"
+  "lastAcceptedFunctionalHead": "a1a6e1abecc35ff0bf1cdde90180a773f03480b6"
 }
