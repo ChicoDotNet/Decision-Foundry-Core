@@ -27,15 +27,11 @@ For a seat backed by a mature 100-subject professional doctorate:
 
 A seat whose 100-subject professional doctorate has not yet been materialized must not fabricate curriculum provenance.
 
-For Directors with a decisive-question catalog:
+- Directors: `canonical seat contract + decisive questions -> 10 professional criterion dimensions -> 10 positive statements per dimension`.
+- Transversals: `canonical transversal contract + outputs + quality focus + permanent skill boundaries -> 10 dimensions -> 10 statements per dimension`.
+- Vice Presidents: `canonical VP mission + reconciled Director portfolio + quality focus + governance transitions + prohibitions -> 10 executive integration dimensions -> 10 statements per dimension`.
 
-`canonical seat contract + decisive questions -> 10 professional criterion dimensions -> 10 positive statements per dimension`
-
-For transversal seats, which do not have a seat-specific decisive-question catalog:
-
-`canonical transversal contract + outputs + quality focus + permanent skill boundaries -> 10 professional criterion dimensions -> 10 positive statements per dimension`
-
-These are real versioned v1 criteria, not placeholders. A later doctorate may justify a new scorecard version and reassessment, but must not silently rewrite historical v1 evidence.
+VP scorecards measure integration, trade-offs, prioritization and governed upward handoff; they do **not** duplicate the five Director professions underneath each VP. A later doctorate may justify a new scorecard version and reassessment, but must not silently rewrite historical v1 evidence.
 
 ## Statement completion plan
 
@@ -69,24 +65,20 @@ Every increment must leave complete 100-statement scorecards; partially authored
 
 S01-S07 materialize D01-D25. D07 is the golden doctorate-backed projection; the remaining Directors use the approved contract-dimensional model. S07 closes the Director layer at **25 / 25 Directors and 2,500 statements**.
 
-### S08 — T01, T02, T03, T04
+### S08-S10 — all 12 transversals
 
-T01 chooses artifact work; T02 governs acquired evidence; T03 defines what must be answered; T04 retrieves authorized evidence. Their contracts preserve distinct authority and no seat gains the right to issue the final business decision.
+S08-S10 materialize T01-T12. Their authority remains intentionally non-collapsing: artifact selection, evidence management, question generation, research/retrieval, quantitative analysis, artifact generation/validation, contradiction detection, executive compression, context packaging, citation/provenance checking and quality gating remain distinct. S10 closes the transversal layer at **12 / 12 transversals and 3,700 cumulative statements**.
 
-### S09 — T05, T06, T07, T08
+### S11 — VP01, VP02, VP03, VP04
 
-T05 performs reproducible quantitative analysis; T06 generates contract-conformant artifacts without exceeding evidence; T07 validates without rewriting artifacts to force a pass; T08 detects and preserves contradictions without selecting the winner.
+- **VP01 Strategy and Capital** integrates D01-D05 around problem-strategy coherence, business-model/purpose integrity, market reality, capital allocation, valuation, transferability, founder dependence, strategic contradictions, abandonment and reversible commitment.
+- **VP02 Growth and Value Creation** integrates D06-D10 around offer-demand-revenue coherence, revenue quality, retention, cash/profit, controls/tax, scaling rhythm, unit economics, capacity and owner independence.
+- **VP03 Enterprise Operating System** integrates D11-D15 around process/capacity, organization/adoption, transformation sequencing, minimal-effective governance, field reality, dependencies, execution flow and realized benefits.
+- **VP04 Technology and Resilience** integrates D16-D20 around architecture/transition, data/AI, security/privacy/continuity, legal/IP constraints, enterprise risk, reliability, cost, reversibility and survival.
 
-### S10 — T09, T10, T11, T12
+All VP inputs must already have passed Council III reconciliation. VP synthesis preserves governance conditions, evidence, uncertainty, contradiction and dissent. A VP opinion is submitted to Council IV and is not eligible for Strategist integration until that approval stage is satisfied. No VP may approve irreversible or materially sensitive action on behalf of the Human Decision Owner.
 
-- **T09 Executive Synthesizer** — executive signal extraction, evidence-bounded compression, dissent/contradiction preservation, confidence, quantitative fidelity, traceability, clarity, decision handoff, and versioned synthesis governance.
-- **T10 Context Packager** — role/task framing, least context, permission and tenancy boundaries, freshness, provenance, uncertainty, token/cost budgets, runtime dependencies, adversarial context integrity, and reproducible package lifecycle.
-- **T11 Citation and Provenance Checker** — material claim identification, source resolution, source authority, support fidelity, quotation accuracy, calculation lineage, temporal validity, derivative lineage, citation defects, and authority-safe verification reporting.
-- **T12 Quality Gate** — gate policy, build/test integrity, schema/contract quality, evidence/provenance, security/privacy, quantitative integrity, dissent/decision quality, deterministic severity/pass-fail logic, remediation/retest, and independent auditable gate authority.
-
-The S10 chain remains non-collapsing: **T09 synthesizes; T10 packages context; T11 verifies citation/provenance; T12 blocks or passes progression against explicit gates.** T12 may block progression but does not acquire domain, strategic, moral, Council, Strategist, or Human Decision Owner authority.
-
-After S10 the catalog contains **37 / 72 complete scorecards and 3,700 / 7,200 canonical statements**, with **12 / 12 transversal seats complete**.
+After S11 the catalog contains **41 / 72 complete scorecards and 4,100 / 7,200 canonical statements**, with **4 / 5 Vice President seats complete**.
 
 ## Validation
 
@@ -109,4 +101,5 @@ During partial construction the manifest validates the materialized subset and d
 - **S07:** functional success on `843bf3a96d102731bd8249b0c4fbc132b11410df`; subsequent metadata heads passed the same workflow.
 - **S08:** functional success on `1e543c17b770ba938c54e491f529c3536a972e00`; final metadata head `9e219b3bec822f868ee749b883bdded75445970a` also passed.
 - **S09:** functional success on `7ac13b8fbb091fb5ea43ac5576023b4f3587cfbf`; final documentation head `d164e2c223ca0df229bb61b1b5e466bd70df326f` also passed.
-- **S10:** functional success on `950315558c28eca88cf5f09980aff3cdef8ef088`; acceptance-marker head `e7dd315f940e4239497d509d585bf203bac4e9f4` also passed the same exact-head workflow.
+- **S10:** functional success on `950315558c28eca88cf5f09980aff3cdef8ef088`; final exact-head documentation passed the same workflow.
+- **S11:** accepted only after the exact functional head containing VP01-VP04, the `1.0.0-dev.11` manifest and this documentation passes `Validate seat scorecards`.
