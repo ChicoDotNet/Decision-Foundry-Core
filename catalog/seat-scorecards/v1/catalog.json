@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "catalogVersion": "1.0.0-dev.14",
+  "catalogVersion": "1.0.0-dev.15",
   "complete": false,
   "canonicalSeatCount": 72,
   "statementsPerSeat": 100,
@@ -10,6 +10,10 @@
     "D01", "D02", "D03", "D04", "D05", "D06", "D07", "D08", "D09", "D10",
     "D11", "D12", "D13", "D14", "D15", "D16", "D17", "D18", "D19", "D20",
     "D21", "D22", "D23", "D24", "D25",
+    "ELD-CERT-JUSTICE",
+    "ELD-CERT-MERCY",
+    "ELD-CERT-PRUDENCE",
+    "ELD-CERT-STEWARDSHIP",
     "ELD-CERT-TRUTH",
     "ELD-CERT-WISDOM",
     "ELD-VAL-JUSTICE",
@@ -23,13 +27,13 @@
     "T01", "T02", "T03", "T04", "T05", "T06", "T07", "T08", "T09", "T10", "T11", "T12",
     "VP01", "VP02", "VP03", "VP04", "VP05"
   ],
-  "materializedSeatCount": 53,
-  "materializedStatementCount": 5300,
+  "materializedSeatCount": 57,
+  "materializedStatementCount": 5700,
   "authoringModels": [
     "professional-doctorate-projection",
     "seat-contract-dimensional-projection"
   ],
-  "iteration": "S14",
+  "iteration": "S15",
   "iterationPlanCount": 19,
   "lastAcceptedFunctionalHead": "6519102475b66ceb7dffb1129009f4b084157d3b"
 }
