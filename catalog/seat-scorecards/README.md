@@ -110,4 +110,4 @@ During partial construction the manifest validates the materialized subset and d
 - **S09:** functional success on `7ac13b8fbb091fb5ea43ac5576023b4f3587cfbf`; final documentation head `d164e2c223ca0df229bb61b1b5e466bd70df326f` also passed.
 - **S10:** functional success on `950315558c28eca88cf5f09980aff3cdef8ef088`; final exact-head documentation passed the same workflow.
 - **S11:** functional success on `3165ab7bd28c5c303c3b62d21aa92afb2857d154`; final exact head `582ddf0bc5cf570cd8ecc1a242e3601149cfd139` passed the same workflow.
-- **S12:** accepted only after the exact functional head containing VP05, S00, CDO, ELD-VAL-TRUTH, the `1.0.0-dev.12` manifest and this documentation passes `Validate seat scorecards`.
+- **S12:** initial functional head `1dd4a48f6f661bd818335a0c31eef0d68b5e1d51` failed only because `materializedSeats` was not in the validator's required lexicographic order; no scorecard content defect was reported. Corrected functional head `7e99ea342aa07683e9346907d5516b07ddabf040` passed `Validate seat scorecards` and is the accepted S12 functional head.
