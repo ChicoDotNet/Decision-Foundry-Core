@@ -60,7 +60,7 @@ These scorecards measure the authority and competence of the canonical seat, not
 | S18 | ELD-APP-TRUTH, ELD-APP-WISDOM, ELD-APP-JUSTICE, ELD-APP-MERCY | 400 | 6,900 |
 | S19 | ELD-APP-PRUDENCE, ELD-APP-STEWARDSHIP, ELD-APP-PURPOSE | 300 | 7,200 |
 
-Every increment must leave complete 100-statement scorecards; partially authored seats do not count as progress.
+Every increment leaves complete 100-statement scorecards; partially authored seats do not count as progress.
 
 ## Materialized increments
 
@@ -80,18 +80,17 @@ S11-S12 materialize VP01-VP05, S00 Strategist and CDO, then begin the Elder laye
 
 S13-S14 complete **Council I Validation 7 / 7** and start Council II. S15-S16 complete **Council II Certification 7 / 7** and start Council III. S17 completes **Council III Reconciliation 7 / 7**.
 
-### S18 — Council IV Approval start
+### S18-S19 — Council IV Approval and catalog completion
 
-S18 materializes the first four Council IV Elders:
+S18 materializes Truth, Wisdom, Justice and Mercy for Council IV. S19 materializes the final three criteria:
 
-- **ELD-APP-TRUTH** evaluates executive claim accuracy, traceability/freshness, material assumptions and unknowns, contradictions/dissent, quantitative/causal integrity, conditions and readiness claims.
-- **ELD-APP-WISDOM** evaluates evidence-weighted executive judgment, strategic trade-offs, alternatives and opportunity cost, second-order consequences, enterprise fit, uncertainty and escalation judgment.
-- **ELD-APP-JUSTICE** evaluates affected parties, rights and obligations, benefit/burden distribution, procedural fairness and voice, conflicts of interest, power asymmetry, remedies and recourse.
-- **ELD-APP-MERCY** evaluates foreseeable harm, vulnerability, necessity and proportionality, lower-harm alternatives, human burden, accountability without excess harm, remediation and recovery.
+- **ELD-APP-PRUDENCE** evaluates executive timing, decision windows, reversibility, optionality, foreseeable consequences, uncertainty triggers, sequencing, dependencies, downside paths and escalation timing.
+- **ELD-APP-STEWARDSHIP** evaluates financial stewardship, time and attention, authority and decision rights, resource commitments, value versus waste, sustainability of commitments and accountable ownership.
+- **ELD-APP-PURPOSE** evaluates mission alignment, intended-outcome coherence, purpose assumptions and evidence, mission drift, stakeholder/enterprise purpose, outcome signals and purpose invalidation.
 
 Council IV reviews the **Vice President → Strategist** transition and asks whether the recommendation deserves to reach the Strategist as an approved proposal. Each Elder issues only its assigned criterion vote. Only the collective Council IV process grants executive approval. Conditions, dissent, contradictions and invalidation conditions remain visible after progression. Irreversible or materially legal, financial, security, privacy, continuity or public action must be escalated as `ReadyForHumanDecision`; no individual Elder or the Strategist may substitute for the Human Decision Owner.
 
-After S18 the catalog contains **69 / 72 complete scorecards and 6,900 / 7,200 canonical statements**. The Elder layer stands at **25 / 28**. Council I Validation, Council II Certification and Council III Reconciliation remain **7 / 7 complete**; Council IV Approval stands at **4 / 7**.
+After S19 the catalog contains **72 / 72 complete scorecards and 7,200 / 7,200 canonical statements**. The Elder layer is **28 / 28 complete** and all four Councils are **7 / 7 complete**. The manifest is `complete: true`; future work must version new scorecard revisions rather than silently mutate historical v1 evidence.
 
 ## Validation
 
@@ -101,11 +100,12 @@ Run:
 python3 tools/validate_scorecards.py
 ```
 
-During partial construction the manifest validates the materialized subset and declared counts. When `complete` becomes `true`, the validator additionally requires exactly 72 seat files and exactly 7,200 statements.
+Because `complete` is now `true`, the validator requires exactly 72 seat files and exactly 7,200 statements in addition to the per-seat invariants.
 
 ### Accepted increments
 
 - **S15:** functional success on `8215567acd6d7da473b780a8ffd20a630588dcde`; final acceptance-marker exact head `f4d313149400f1966df8a653bc626f7ff81040ee` also passed.
 - **S16:** functional success on `0bc2e89475b2800555bff3a9279825241cb6c817`; final acceptance-marker exact head `74f7d917d02fa3e0e03ba7919905af5295fd9c20` also passed.
 - **S17:** functional success on `60f7374b95fbe505d34084cc230586ff3271861e`; final exact head `443c77442729264bcd0bf2fff38cd6bbfa425b0a` also passed.
-- **S18:** functional success on `2e8e9d208ad962e690cb2415e009f47b4b2eebf6`; final exact-head marker is accepted only after this documentation head also passes `Validate seat scorecards`.
+- **S18:** functional success on `2e8e9d208ad962e690cb2415e009f47b4b2eebf6`; final exact head `e60f88c99abccb6043d1e3022b90e4f158b64b96` also passed.
+- **S19:** accepted only after the exact functional head containing all 72 seat files, `complete: true`, 7,200 statements and this documentation passes `Validate seat scorecards`.
