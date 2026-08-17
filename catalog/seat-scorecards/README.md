@@ -21,7 +21,7 @@ For a seat backed by a mature 100-subject professional doctorate:
 
 `Subject N -> exit competence / mastery criterion -> positive occupant criterion -> Statement N`
 
-`v1/D07.json` is the golden reference, projected from the validated 100-subject ASBN CaOS Marketing Specialist professional doctorate.
+`v1/D07.json` remains the golden reference, projected from the validated 100-subject ASBN CaOS Marketing Specialist professional doctorate.
 
 ### Seat-contract dimensional projection
 
@@ -30,8 +30,11 @@ A seat whose 100-subject professional doctorate has not yet been materialized mu
 - Directors: `canonical seat contract + decisive questions -> 10 professional criterion dimensions -> 10 positive statements per dimension`.
 - Transversals: `canonical transversal contract + outputs + quality focus + permanent skill boundaries -> 10 dimensions -> 10 statements per dimension`.
 - Vice Presidents: `canonical VP mission + reconciled Director portfolio + quality focus + governance transitions + prohibitions -> 10 executive integration dimensions -> 10 statements per dimension`.
+- Strategist: `canonical S00 mission + five Council-IV-approved VP opinions + enterprise trade-offs + Human Decision Owner boundary -> 10 executive integration dimensions -> 10 statements per dimension`.
+- Chief Delivery Officer: `canonical flow mission + procedural authority + standard outputs + metrics + prohibitions -> 10 institutional-flow dimensions -> 10 statements per dimension`.
+- Elders: `governance stage mission + criterion focus + stage quality + vote/conditions/escalation + prohibitions -> 10 governance-evaluation dimensions -> 10 statements per dimension`.
 
-VP scorecards measure integration, trade-offs, prioritization and governed upward handoff; they do **not** duplicate the five Director professions underneath each VP. A later doctorate may justify a new scorecard version and reassessment, but must not silently rewrite historical v1 evidence.
+These scorecards measure the authority and competence of the canonical seat, not a larger generic profession. A later doctorate may justify a new scorecard version and reassessment, but must not silently rewrite historical v1 evidence.
 
 ## Statement completion plan
 
@@ -67,18 +70,22 @@ S01-S07 materialize D01-D25. D07 is the golden doctorate-backed projection; the 
 
 ### S08-S10 — all 12 transversals
 
-S08-S10 materialize T01-T12. Their authority remains intentionally non-collapsing: artifact selection, evidence management, question generation, research/retrieval, quantitative analysis, artifact generation/validation, contradiction detection, executive compression, context packaging, citation/provenance checking and quality gating remain distinct. S10 closes the transversal layer at **12 / 12 transversals and 3,700 cumulative statements**.
+S08-S10 materialize T01-T12. Artifact selection, evidence management, question generation, research/retrieval, quantitative analysis, artifact generation/validation, contradiction detection, executive compression, context packaging, citation/provenance checking and quality gating remain distinct. S10 closes the transversal layer at **12 / 12 transversals and 3,700 cumulative statements**.
 
 ### S11 — VP01, VP02, VP03, VP04
 
-- **VP01 Strategy and Capital** integrates D01-D05 around problem-strategy coherence, business-model/purpose integrity, market reality, capital allocation, valuation, transferability, founder dependence, strategic contradictions, abandonment and reversible commitment.
-- **VP02 Growth and Value Creation** integrates D06-D10 around offer-demand-revenue coherence, revenue quality, retention, cash/profit, controls/tax, scaling rhythm, unit economics, capacity and owner independence.
-- **VP03 Enterprise Operating System** integrates D11-D15 around process/capacity, organization/adoption, transformation sequencing, minimal-effective governance, field reality, dependencies, execution flow and realized benefits.
-- **VP04 Technology and Resilience** integrates D16-D20 around architecture/transition, data/AI, security/privacy/continuity, legal/IP constraints, enterprise risk, reliability, cost, reversibility and survival.
+VP01-VP04 integrate their five reconciled Director portfolios without duplicating Director domain ownership. All VP inputs must already have passed Council III reconciliation. VP synthesis preserves governance conditions, evidence, uncertainty, contradiction and dissent; the VP opinion must pass Council IV before Strategist integration.
 
-All VP inputs must already have passed Council III reconciliation. VP synthesis preserves governance conditions, evidence, uncertainty, contradiction and dissent. A VP opinion is submitted to Council IV and is not eligible for Strategist integration until that approval stage is satisfied. No VP may approve irreversible or materially sensitive action on behalf of the Human Decision Owner.
+### S12 — VP05, S00, CDO, ELD-VAL-TRUTH
 
-After S11 the catalog contains **41 / 72 complete scorecards and 4,100 / 7,200 canonical statements**, with **4 / 5 Vice President seats complete**.
+- **VP05 Evidence, Contradiction and Integration** integrates D21-D25 while protecting provenance, falsification, impact/ethics, expert comparability, dissent and benefit realization. It completes the **5 / 5 Vice President layer**.
+- **S00 Strategist** integrates only Council-IV-approved VP opinions, resolves enterprise-level trade-offs, selects priorities and produces the final decision opinion while preserving dissent, conditions and material uncertainty. It does not approve irreversible or materially sensitive action for the Human Decision Owner.
+- **CDO Chief Delivery Officer** protects institutional flow through visibility and escalation. It detects blockers, missing owners, dependency loops, aging work, forgotten dissent and coordination overhead, but does not issue domain/moral/strategic opinions, vote in Councils, mutate evidence or approve decisions.
+- **ELD-VAL-TRUTH Validation Elder — Truth** evaluates whether specialized work is valid for Manager synthesis through the Truth criterion: evidence and claims must be accurate, traceable and not misleading. It issues one criterion-specific Council I vote with rationale and conditions without replacing or rewriting production analysis.
+
+The S12 boundary is intentionally non-collapsing: **VP05 integrates evidence-related Directors; S00 integrates approved VP opinions; CDO only governs procedural flow; ELD-VAL-TRUTH only evaluates Truth at Council I.** None inherits the authority of another seat.
+
+After S12 the catalog contains **45 / 72 complete scorecards and 4,500 / 7,200 canonical statements**, with **25 / 25 Directors, 12 / 12 transversals and 5 / 5 Vice Presidents complete**. The Elder layer has begun at **1 / 28**.
 
 ## Validation
 
@@ -102,4 +109,5 @@ During partial construction the manifest validates the materialized subset and d
 - **S08:** functional success on `1e543c17b770ba938c54e491f529c3536a972e00`; final metadata head `9e219b3bec822f868ee749b883bdded75445970a` also passed.
 - **S09:** functional success on `7ac13b8fbb091fb5ea43ac5576023b4f3587cfbf`; final documentation head `d164e2c223ca0df229bb61b1b5e466bd70df326f` also passed.
 - **S10:** functional success on `950315558c28eca88cf5f09980aff3cdef8ef088`; final exact-head documentation passed the same workflow.
-- **S11:** functional success on `3165ab7bd28c5c303c3b62d21aa92afb2857d154`; acceptance metadata records the same accepted functional head.
+- **S11:** functional success on `3165ab7bd28c5c303c3b62d21aa92afb2857d154`; final exact head `582ddf0bc5cf570cd8ecc1a242e3601149cfd139` passed the same workflow.
+- **S12:** accepted only after the exact functional head containing VP05, S00, CDO, ELD-VAL-TRUTH, the `1.0.0-dev.12` manifest and this documentation passes `Validate seat scorecards`.
