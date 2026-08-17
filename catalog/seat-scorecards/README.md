@@ -98,6 +98,19 @@ S03 materializes four additional complete scorecards:
 
 After S03 the catalog contains **9 / 72 complete scorecards and 900 / 7,200 canonical statements**.
 
+## S04 — business model, investment, operations, and integrated synthesis
+
+S04 materializes four additional complete scorecards:
+
+- **D03 Business Model and Purpose** — value creation, value delivery, value capture, stakeholder coherence, model architecture, purpose integrity, ecosystem fit, resilience, experimentation and coherence stewardship;
+- **D05 Investment, M&A, and Transferability** — investment thesis, valuation drivers, diligence, transaction structure, strategic fit, founder dependence, transferability, downside protection, integration and investment governance;
+- **D11 Operations and Processes** — work-as-done, target operating model, capacity/flow, constraints, standard work, quality, automation, exceptions/recovery, operating economics and continuous improvement;
+- **D25 Integrated Synthesis and Benefits Realization** — evidence intake, contradiction resolution, materiality, integrated recommendations, dependency roadmap, benefit baselines, realization, integrated metrics, executive opinion and synthesis governance.
+
+D25 is explicitly bounded as an integration seat: it synthesizes and makes benefit realization reconstructible, but does not silently replace the Strategist or Human Decision Owner.
+
+After S04 the catalog contains **13 / 72 complete scorecards and 1,300 / 7,200 canonical statements**.
+
 ## Validation
 
 Run:
@@ -111,5 +124,6 @@ During partial construction, the manifest validates the materialized subset and 
 ### Accepted increments
 
 - **S01** exact-head workflow: success on `4d130e0db9fef425ce5752414ed4ee8b42378b88`.
-- **S02** functional acceptance: `Validate seat scorecards` succeeded on `eddec91bcdf5aa8334e295d76f22b007c65ddbed`, validating **5 scorecards / 500 statements**. Later commits only record that acceptance in catalog/documentation metadata.
-- **S03** acceptance is recorded only after the exact functional head containing all four scorecards and the `1.0.0-dev.3` manifest passes the same workflow.
+- **S02** functional acceptance: success on `eddec91bcdf5aa8334e295d76f22b007c65ddbed`, validating **5 scorecards / 500 statements**.
+- **S03** functional acceptance: success on `f00e436556e6a2a3cedcf22d737d721a5bcddece`; subsequent S03 metadata head also passed the same workflow.
+- **S04** is accepted only after the exact head containing all four S04 scorecards, `1.0.0-dev.4` manifest, and this documentation passes `Validate seat scorecards`.
