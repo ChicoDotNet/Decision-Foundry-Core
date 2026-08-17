@@ -78,24 +78,24 @@ S11 materializes VP01-VP04. S12 completes VP05, adds S00 Strategist and CDO, and
 
 ### S13-S14 — Council I completion and Council II start
 
-S13 adds Validation Elders for Wisdom, Justice, Mercy and Prudence. S14 adds Validation Stewardship and Purpose, closing **Council I Validation at 7 / 7**, then begins Council II with Certification Truth and Wisdom. Validation asks whether specialized work is valid for Manager synthesis; Certification asks whether Manager synthesis faithfully represents Specialist work before a Director opinion.
+S13 adds Validation Elders for Wisdom, Justice, Mercy and Prudence. S14 adds Validation Stewardship and Purpose, closing **Council I Validation at 7 / 7**, then begins Council II with Certification Truth and Wisdom.
 
-### S15 — Council II Certification expansion
+### S15-S16 — Council II completion and Council III start
 
-S15 adds Certification Elders for Justice, Mercy, Prudence and Stewardship. Each evaluates only its assigned criterion and preserves the Specialist record, Manager synthesis boundaries, dissent, contradictions and invalidation conditions. After S15, Council II stands at **6 / 7 criteria** and the catalog contains **57 / 72 scorecards and 5,700 / 7,200 statements**.
+S15 adds Certification Elders for Justice, Mercy, Prudence and Stewardship. S16 adds Certification Purpose, closing **Council II Certification at 7 / 7**, and begins Council III with Reconciliation Truth, Wisdom and Justice.
 
-### S16 — Council II completion and Council III start
+### S17 — Council III Reconciliation complete
 
-S16 materializes four Elders:
+S17 materializes the four remaining Reconciliation Elders:
 
-- **ELD-CERT-PURPOSE** closes Council II by certifying whether Manager synthesis faithfully preserves declared mission, intended outcomes, purpose-relevant assumptions, trade-offs, mission drift, measures and invalidation conditions.
-- **ELD-REC-TRUTH** begins Council III by testing cross-domain claim accuracy, constraint evidence, contradictions, dependencies, quantitative/causal consistency, unknowns and evidence-supported coexistence boundaries.
-- **ELD-REC-WISDOM** evaluates whether sound judgment is applied to cross-domain trade-offs, uncertainty, alternatives, sequencing, reversibility, second-order consequences, constraint prioritization and escalation readiness.
-- **ELD-REC-JUSTICE** evaluates affected-party representation, obligations, burden/benefit distribution, procedural fairness, dissent, trade-off fairness and accountability across Director domains.
+- **ELD-REC-MERCY** evaluates cross-domain harm and burden, vulnerability, accountability without unnecessary harm, proportionality, lower-harm alternatives, dissent about harm and remediation burden.
+- **ELD-REC-PRUDENCE** evaluates timing, reversibility, foreseeable consequences, uncertainty triggers, sequencing, dependencies, downside paths and decision pace.
+- **ELD-REC-STEWARDSHIP** evaluates financial commitments, time and attention, authority, capacity, resource constraints, enterprise waste, sustainability and accountability for resource use.
+- **ELD-REC-PURPOSE** evaluates mission alignment, intended-outcome coherence, purpose evidence, mission drift, stakeholder/enterprise purpose, outcome measures and purpose invalidation conditions.
 
-The authority boundary is explicit: Council II reviews the **Manager → Director** transition for faithful synthesis; Council III reviews the **Director → Vice President** transition for enterprise coexistence. Reconciliation does not rewrite the Director recommendation, manufacture consensus, issue the collective Council result from one criterion, approve the business decision or replace Council IV executive approval.
+Council III asks whether a **Director → Vice President** recommendation can coexist with enterprise constraints and other domains. Each Elder issues only its assigned criterion vote. Reconciliation preserves dissent, contradictions and invalidation conditions; it does not rewrite the Director recommendation, manufacture consensus, emit the collective Council result from one criterion, approve the business decision, or replace Council IV executive approval.
 
-After S16 the catalog contains **61 / 72 complete scorecards and 6,100 / 7,200 canonical statements**. The Elder layer stands at **17 / 28**. Council I is **7 / 7**, Council II is **7 / 7**, and Council III is **3 / 7**.
+After S17 the catalog contains **65 / 72 complete scorecards and 6,500 / 7,200 canonical statements**. The Elder layer stands at **21 / 28**. Council I Validation is **7 / 7**, Council II Certification is **7 / 7**, and Council III Reconciliation is **7 / 7**.
 
 ## Validation
 
@@ -124,4 +124,5 @@ During partial construction the manifest validates the materialized subset and d
 - **S13:** functional success on `2f0e2a758c8af94ff176709d35cf162515de0b60`; acceptance-marker exact head `0e35f404beb3f64b9a814fca1cfabc65089ac0be` also passed.
 - **S14:** final accepted head recorded in the S15 predecessor history.
 - **S15:** functional success on `8215567acd6d7da473b780a8ffd20a630588dcde`; final acceptance-marker exact head `f4d313149400f1966df8a653bc626f7ff81040ee` also passed.
-- **S16:** accepted only after the exact functional head containing the four new Elder scorecards, the `1.0.0-dev.16` manifest and this documentation passes `Validate seat scorecards`.
+- **S16:** functional success on `0bc2e89475b2800555bff3a9279825241cb6c817`; final acceptance-marker exact head `74f7d917d02fa3e0e03ba7919905af5295fd9c20` also passed.
+- **S17:** accepted only after the exact functional head containing the four new Reconciliation Elder scorecards, the `1.0.0-dev.17` manifest and this documentation passes `Validate seat scorecards`.
