@@ -108,4 +108,4 @@ During partial construction the manifest validates the materialized subset and d
 - **S15:** functional success on `8215567acd6d7da473b780a8ffd20a630588dcde`; final acceptance-marker exact head `f4d313149400f1966df8a653bc626f7ff81040ee` also passed.
 - **S16:** functional success on `0bc2e89475b2800555bff3a9279825241cb6c817`; final acceptance-marker exact head `74f7d917d02fa3e0e03ba7919905af5295fd9c20` also passed.
 - **S17:** functional success on `60f7374b95fbe505d34084cc230586ff3271861e`; final exact head `443c77442729264bcd0bf2fff38cd6bbfa425b0a` also passed.
-- **S18:** accepted only after the exact functional head containing the four new Approval Elder scorecards, the `1.0.0-dev.18` manifest and this documentation passes `Validate seat scorecards`.
+- **S18:** functional success on `2e8e9d208ad962e690cb2415e009f47b4b2eebf6`; final exact-head marker is accepted only after this documentation head also passes `Validate seat scorecards`.
