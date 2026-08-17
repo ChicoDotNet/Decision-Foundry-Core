@@ -27,15 +27,15 @@ For a seat backed by a mature 100-subject professional doctorate:
 
 A seat whose 100-subject professional doctorate has not yet been materialized must not fabricate curriculum provenance.
 
-For Directors with a decisive-question catalog, the pattern is:
+For Directors with a decisive-question catalog:
 
 `canonical seat contract + decisive questions -> 10 professional criterion dimensions -> 10 positive statements per dimension`
 
-For transversal seats, which do not have a seat-specific decisive-question catalog, the pattern is:
+For transversal seats, which do not have a seat-specific decisive-question catalog:
 
 `canonical transversal contract + outputs + quality focus + permanent skill boundaries -> 10 professional criterion dimensions -> 10 positive statements per dimension`
 
-The resulting statements are real versioned v1 criteria, not placeholders. A later doctorate may justify a new scorecard version and reassessment, but must not silently rewrite historical v1 evidence.
+These are real versioned v1 criteria, not placeholders. A later doctorate may justify a new scorecard version and reassessment, but must not silently rewrite historical v1 evidence.
 
 ## Statement completion plan
 
@@ -67,27 +67,26 @@ Every increment must leave complete 100-statement scorecards; partially authored
 
 ### S01-S07 — all 25 Directors
 
-S01-S07 materialize D01-D25. D07 is the golden doctorate-backed projection; the remaining Directors use the approved contract-dimensional model. S07 closes the complete Director layer at **25 / 25 Directors and 2,500 statements**.
+S01-S07 materialize D01-D25. D07 is the golden doctorate-backed projection; the remaining Directors use the approved contract-dimensional model. S07 closes the Director layer at **25 / 25 Directors and 2,500 statements**.
 
 ### S08 — T01, T02, T03, T04
 
-- **T01 Artifact Selector** chooses artifact work from decision need, applicability, uncertainty reduction, risk coverage, actionability, dependencies, effort/value, evidence readiness, portfolio coherence, and selection governance.
-- **T02 Evidence Manager** governs evidence identity, provenance, versions, deduplication, claim links, authorization, freshness, invalidation, contradictions, and handoff.
-- **T03 Question Generator** turns decision uncertainty into bounded decisive questions with coverage, falsifiability, sequencing, adaptive questioning, and gap detection.
-- **T04 Research and Retrieval** retrieves authorized internal and external evidence with scoped search, provenance, freshness, source quality, triangulation, and reproducible handoff.
-
-Their boundaries remain distinct: T01 chooses work; T02 governs acquired evidence; T03 defines what must be answered; T04 retrieves authorized evidence.
+T01 chooses artifact work; T02 governs acquired evidence; T03 defines what must be answered; T04 retrieves authorized evidence. Their contracts preserve distinct authority and no seat gains the right to issue the final business decision.
 
 ### S09 — T05, T06, T07, T08
 
-- **T05 Quantitative Analysis** — problem formulation, data fitness, reproducible calculation, model assumptions, statistical uncertainty, sensitivity/scenarios, numerical validation, interpretation limits, audit trail, and governed quantitative handoff.
-- **T06 Artifact Generator** — registry-contract interpretation, input readiness, schema conformance, evidence-bounded claims, question coverage, quantitative/citation integration, dissent preservation, usability, reproducible generation, and authority-safe handoff.
-- **T07 Artifact Validator** — contract resolution, schema, lineage, dependencies, question coverage, semantic quality, quantitative/citation checks, defect severity, regression/reproducibility, and validator authority boundaries.
-- **T08 Contradiction Detector** — contradiction definition, normalized claims, assumption conflicts, metric conflicts, version/temporal conflicts, recommendation conflicts, alternative explanations, materiality, contradiction lifecycle, and dissent-preserving handoff.
+T05 performs reproducible quantitative analysis; T06 generates contract-conformant artifacts without exceeding evidence; T07 validates without rewriting artifacts to force a pass; T08 detects and preserves contradictions without selecting the winner.
 
-The S09 chain is intentionally non-collapsing: **T05 analyzes; T06 generates; T07 validates without rewriting the artifact to make it pass; T08 detects and preserves contradictions without selecting the winner.** None of these roles gains domain, synthesis, certification, approval, or human-decision authority.
+### S10 — T09, T10, T11, T12
 
-After S09 the catalog contains **33 / 72 complete scorecards and 3,300 / 7,200 canonical statements**, with **8 / 12 transversal seats complete**.
+- **T09 Executive Synthesizer** — executive signal extraction, evidence-bounded compression, dissent/contradiction preservation, confidence, quantitative fidelity, traceability, clarity, decision handoff, and versioned synthesis governance.
+- **T10 Context Packager** — role/task framing, least context, permission and tenancy boundaries, freshness, provenance, uncertainty, token/cost budgets, runtime dependencies, adversarial context integrity, and reproducible package lifecycle.
+- **T11 Citation and Provenance Checker** — material claim identification, source resolution, source authority, support fidelity, quotation accuracy, calculation lineage, temporal validity, derivative lineage, citation defects, and authority-safe verification reporting.
+- **T12 Quality Gate** — gate policy, build/test integrity, schema/contract quality, evidence/provenance, security/privacy, quantitative integrity, dissent/decision quality, deterministic severity/pass-fail logic, remediation/retest, and independent auditable gate authority.
+
+The S10 chain remains non-collapsing: **T09 synthesizes; T10 packages context; T11 verifies citation/provenance; T12 blocks or passes progression against explicit gates.** T12 may block progression but does not acquire domain, strategic, moral, Council, Strategist, or Human Decision Owner authority.
+
+After S10 the catalog contains **37 / 72 complete scorecards and 3,700 / 7,200 canonical statements**, with **12 / 12 transversal seats complete**.
 
 ## Validation
 
@@ -109,4 +108,5 @@ During partial construction the manifest validates the materialized subset and d
 - **S06:** functional success on `ba5f01d67383be35881e9df9b4d7d33446aac4f6`; acceptance-marker head `271c459f53982f9d25bb11a4cd636a07148b588e` also passed.
 - **S07:** functional success on `843bf3a96d102731bd8249b0c4fbc132b11410df`; subsequent metadata heads passed the same workflow.
 - **S08:** functional success on `1e543c17b770ba938c54e491f529c3536a972e00`; final metadata head `9e219b3bec822f868ee749b883bdded75445970a` also passed.
-- **S09:** functional success on `7ac13b8fbb091fb5ea43ac5576023b4f3587cfbf`; acceptance-marker head `7b0f0f0542def6017f67e30bdca84c86bdee4075` and subsequent documentation heads passed the same exact-head workflow.
+- **S09:** functional success on `7ac13b8fbb091fb5ea43ac5576023b4f3587cfbf`; final documentation head `d164e2c223ca0df229bb61b1b5e466bd70df326f` also passed.
+- **S10:** accepted only after the exact functional head containing T09-T12, the `1.0.0-dev.10` manifest, and this documentation passes `Validate seat scorecards`.
