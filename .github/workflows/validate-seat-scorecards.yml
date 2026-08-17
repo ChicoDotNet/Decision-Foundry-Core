@@ -1,0 +1,13 @@
+name: Validate seat scorecards
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  scorecards:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate canonical scorecard data
+        run: python3 tools/validate_scorecards.py
