@@ -108,4 +108,4 @@ Because `complete` is now `true`, the validator requires exactly 72 seat files a
 - **S16:** functional success on `0bc2e89475b2800555bff3a9279825241cb6c817`; final acceptance-marker exact head `74f7d917d02fa3e0e03ba7919905af5295fd9c20` also passed.
 - **S17:** functional success on `60f7374b95fbe505d34084cc230586ff3271861e`; final exact head `443c77442729264bcd0bf2fff38cd6bbfa425b0a` also passed.
 - **S18:** functional success on `2e8e9d208ad962e690cb2415e009f47b4b2eebf6`; final exact head `e60f88c99abccb6043d1e3022b90e4f158b64b96` also passed.
-- **S19:** accepted only after the exact functional head containing all 72 seat files, `complete: true`, 7,200 statements and this documentation passes `Validate seat scorecards`.
+- **S19:** functional success on `765e9c39d12dbc6957237172a95c4e2427e0b58f`; the final exact-head marker is accepted only after this documentation head also passes `Validate seat scorecards`.
