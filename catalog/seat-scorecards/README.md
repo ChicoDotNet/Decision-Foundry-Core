@@ -62,35 +62,33 @@ Every increment must leave complete 100-statement scorecards; partially authored
 ## Materialized increments
 
 ### S01 — D07
-
 Marketing, Sales, and Revenue: golden 100-subject doctorate projection.
 
 ### S02 — D01, D04, D06, D15
-
 Problem/decision clarity; market/customer/competition; offer/product/pricing; and customer/operator/field reality.
 
 ### S03 — D02, D08, D10, D21
-
 Corporate strategy; finance/treasury/value creation; scaling/profitability/independence; and case-file/evidence/traceability.
 
 ### S04 — D03, D05, D11, D25
-
-Business model/purpose; investment/M&A/transferability; operations/processes; and integrated synthesis/benefits realization. D25 integrates evidence and benefits but does not replace the Strategist or Human Decision Owner.
+Business model/purpose; investment/M&A/transferability; operations/processes; and integrated synthesis/benefits realization.
 
 ### S05 — D12, D13, D14, D16
-
-Organization/people/adoption; projects/programs/transformation; minimal-effective governance/accountability; and enterprise architecture/Microsoft. D16 evaluates Microsoft on enterprise fit rather than vendor alignment alone.
+Organization/people/adoption; projects/programs/transformation; minimal-effective governance/accountability; and enterprise architecture/Microsoft.
 
 ### S06 — D09, D17, D18, D20
+Audit/tax/controls; data/analytics/AI; cybersecurity/privacy/continuity; and enterprise risk/resilience.
 
-- **D09 Audit, Tax, and Controls** — financial/reporting integrity, tax exposure, control design, operating effectiveness, audit evidence, compliance mapping, fraud/error risk, remediation, assurance independence, and continuous-controls governance.
-- **D17 Data, Analytics, and AI** — decision-centered problem framing, data fitness/provenance, analytics/measurement, automate-vs-augment choices, model/system evaluation, data/AI governance, responsible AI, MLOps, lifecycle economics, and production monitoring.
-- **D18 Cybersecurity, Privacy, and Continuity** — threat modeling, asset criticality, identity/least privilege, security architecture, privacy engineering, incident/crisis readiness, continuity objectives, recovery testing, supply-chain/cloud security, and evidence-based security governance.
-- **D20 Enterprise Risk and Resilience** — risk appetite, causal risk identification, inherent/residual exposure, scenario stress testing, treatment design, resilience/optionality, KRIs, risk governance, crisis/survival decisions, and portfolio adaptation.
+### S07 — D19, D22, D23, D24
 
-S06 intentionally separates four related authorities: **D09 asks whether obligations and controls are reliable; D17 asks whether data/AI improve decisions safely and economically; D18 asks how information and operations resist attack and recover; D20 asks which exposures threaten objectives or enterprise survival and how they should be governed.**
+- **D19 Legal, Regulation, and Intellectual Property** — jurisdiction, obligations, contracts, liability, IP ownership, data/privacy law, corporate authority, employment law, regulatory readiness, and legal decision handoff.
+- **D22 Red Team and Falsification** — independence, assumption attack, counter-hypotheses, evidence stress tests, pre-mortems, adversarial scenarios, stop criteria, reversibility, dissent preservation, and falsification governance.
+- **D23 Sustainability, Impact, and Ethics** — stakeholder distribution, harm/rights, externalities, mission integrity, additionality, impact evidence, durability, fairness/access, safeguards, and ethical decision handoff.
+- **D24 Industry, Benchmarks, and Expert Knowledge** — industry structure, sector economics, comparables, benchmark quality, sector regulation, seasonality, failure patterns, expert elicitation, structural trends, and industry synthesis.
 
-After S06 the catalog contains **21 / 72 complete scorecards and 2,100 / 7,200 canonical statements**.
+S07 completes **all 25 Director scorecards**. Their authority boundaries remain distinct: D19 interprets legality and ownership; D22 independently attacks claims and assumptions; D23 evaluates stakeholder harm, ethics, impact, and mission drift; D24 supplies sector-specific evidence, comparability, and expert gaps.
+
+After S07 the catalog contains **25 / 72 complete scorecards and 2,500 / 7,200 canonical statements**.
 
 ## Validation
 
@@ -109,4 +107,5 @@ During partial construction the manifest validates the materialized subset and d
 - **S03:** success on `f00e436556e6a2a3cedcf22d737d721a5bcddece` and subsequent metadata head.
 - **S04:** functional success on `8b20e881bb4ea3f4a361dbd206686c70bb6954ed`; acceptance-marker head `a1a6e1abecc35ff0bf1cdde90180a773f03480b6` also passed.
 - **S05:** functional success on `82f166cb8afa7a88e08d6f90a870e1f107833df2`; acceptance-marker head `4a97ed025100e2e9b707238e10d96ab5010c4b9f` also passed.
-- **S06:** accepted only after the exact functional head containing all four S06 scorecards, the `1.0.0-dev.6` manifest, and this documentation passes `Validate seat scorecards`.
+- **S06:** functional success on `ba5f01d67383be35881e9df9b4d7d33446aac4f6`; acceptance-marker head `271c459f53982f9d25bb11a4cd636a07148b588e` also passed.
+- **S07:** accepted only after the exact functional head containing all four S07 scorecards, the `1.0.0-dev.7` manifest, and this documentation passes `Validate seat scorecards`.
