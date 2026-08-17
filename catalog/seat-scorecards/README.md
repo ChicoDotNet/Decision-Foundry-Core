@@ -19,9 +19,7 @@ For a seat backed by a mature 100-subject professional doctorate, the preferred 
 
 `Subject N -> exit competence / mastery criterion -> positive occupant criterion -> Statement N`
 
-The mapping is deliberately close to one-to-one because the doctorate already decomposes professional mastery into 100 coherent learning areas. A statement is not copied from the subject title: it distills the competence, evidence discipline, failure boundaries and mastery expected from an excellent practitioner.
-
-`v1/D07.json` is the golden reference for this model. Its primary curriculum provenance is the validated 100-subject **ASBN CaOS Marketing Specialist** professional doctorate.
+`v1/D07.json` is the golden reference for this model, projected from the validated 100-subject ASBN CaOS Marketing Specialist professional doctorate.
 
 ## Seat-contract dimensional projection
 
@@ -31,22 +29,11 @@ For those seats, the approved interim v1 authoring model is:
 
 `canonical mission + responsibilities + outputs + quality focus + decisive questions -> 10 professional criterion dimensions -> 10 positive statements per dimension`
 
-The resulting 100 statements are real versioned scorecard content, not placeholders. They are grounded in the institutional job contract and can be used as v1 assessment evidence.
+The resulting statements are real versioned assessment content, not placeholders. A later doctorate may justify a new scorecard version and reassessment, but must not silently rewrite historical v1 evidence.
 
-When the corresponding 100-subject professional doctorate is later completed, it may support a **new scorecard version** and a documented reassessment. It must not silently rewrite a v1 scorecard against which historical candidate evidence was already collected.
-
-For this authoring model the validator requires:
-
-- exactly 10 criterion dimensions;
-- stable dimension identities `<seat>-01` through `<seat>-10`;
-- exactly 10 statements sourced from each dimension;
-- no false `sourceSubject` provenance;
-- explicit `professionalDoctorateStatus: not-yet-materialized`;
-- 100 unique, non-empty positive ideal-occupant statements.
+The validator requires exactly 10 criterion dimensions, stable dimension identities, exactly 10 statements per dimension, no false `sourceSubject` provenance, explicit `professionalDoctorateStatus: not-yet-materialized`, and 100 unique positive `I ...` statements.
 
 ## Statement completion plan
-
-The scorecard program is intentionally 19 increments. S01 establishes the golden quality bar with D07 before higher-throughput batches begin.
 
 | Increment | Seats completed | Increment statements | Cumulative |
 |---|---|---:|---:|
@@ -70,46 +57,36 @@ The scorecard program is intentionally 19 increments. S01 establishes the golden
 | S18 | ELD-APP-TRUTH, ELD-APP-WISDOM, ELD-APP-JUSTICE, ELD-APP-MERCY | 400 | 6,900 |
 | S19 | ELD-APP-PRUDENCE, ELD-APP-STEWARDSHIP, ELD-APP-PURPOSE | 300 | 7,200 |
 
-The ordering front-loads production roles, then transversal/platform work, then executive synthesis and finally the four governance stages. Every increment must leave complete 100-statement scorecards; partially authored seats do not count as progress.
+Every increment must leave complete 100-statement scorecards; partially authored seats do not count as progress.
 
-## S01 — D07 golden scorecard
+## Materialized increments
 
-`v1/D07.json` is the first complete scorecard and the authoring reference for profession-backed seats. Its statements preserve D07's canonical mission — repeatable demand and revenue systems — while projecting the Marketing doctorate's scientific, buyer, commercial, creative, experience, measurement, AI, legal, financial, operational and doctoral standards into ideal-occupant criteria.
+### S01 — D07 golden scorecard
 
-## S02 — first four seat-contract projections
+Marketing, Sales, and Revenue: 100-subject doctorate projection preserving scientific, buyer, commercial, creative, experience, measurement, AI, legal, financial, operational, and doctoral standards.
 
-S02 materializes four additional complete scorecards:
+### S02 — D01, D04, D06, D15
 
-- **D01 Problem and Decision Clarity** — decision framing, problem definition, scope, root causes, MECE decomposition, falsifiable hypotheses, evidence requirements, uncertainty, options and decision readiness;
-- **D04 Market, Customer, and Competition** — market framing, customer jobs, segmentation/ICP, behavioral demand, market sizing, competition, willingness to pay, research quality, market evolution and strategic synthesis;
-- **D06 Offer, Product, and Pricing** — outcome/value, product-offer fit, offer architecture, scope, differentiation, pricing, packaging, experimentation, build-buy-partner-kill and product economics/governance;
-- **D15 Customer, Operator, and Field Reality** — direct field observation, customer/payment behavior, work-as-done, difficult-day feasibility, workarounds, burden/human factors, service reliability, field testing, contradiction/escalation and adoption learning.
+Problem/decision clarity; market/customer/competition; offer/product/pricing; and customer/operator/field reality.
 
-After S02 the catalog contains **5 / 72 complete scorecards and 500 / 7,200 canonical statements**.
+### S03 — D02, D08, D10, D21
 
-## S03 — strategy, finance, scaling, and evidence
+Corporate strategy; finance/treasury/value creation; scaling/profitability/independence; and case-file/evidence/traceability.
 
-S03 materializes four additional complete scorecards:
+### S04 — D03, D05, D11, D25
 
-- **D02 Corporate Strategy** — strategic diagnosis, where-to-play, how-to-win, trade-offs/abandonment, capabilities, options, uncertainty, portfolio coherence, roadmap and strategic renewal;
-- **D08 Finance, Treasury, and Value Creation** — financial truth, liquidity, unit economics, scenarios, capital allocation, valuation, action/inaction economics, downside, business cases and financial governance;
-- **D10 Scaling, Profitability, and Independence** — next vital need, profit discipline, cash-funded growth, owner independence, operating rhythm, pruning, capacity/bottlenecks, accountability, repeatable growth and transferability;
-- **D21 Case File, Evidence, and Traceability** — case state, provenance, claim traceability, versioning, freshness/authority, evidence graph integrity, confidentiality, handoff, contradiction/invalidation and institutional memory.
+Business model/purpose; investment/M&A/transferability; operations/processes; and integrated synthesis/benefits realization. D25 integrates evidence and benefits but does not replace the Strategist or Human Decision Owner.
 
-After S03 the catalog contains **9 / 72 complete scorecards and 900 / 7,200 canonical statements**.
+### S05 — D12, D13, D14, D16
 
-## S04 — business model, investment, operations, and integrated synthesis
+- **D12 Organization, People, and Adoption** — organization design, accountability, skills/capacity, incentives, change readiness, adoption behavior, leadership system, talent lifecycle, organizational evidence, and human-impact governance.
+- **D13 Projects, Programs, and Transformation** — transformation framing, increments, dependencies/critical path, estimation, stage gates, risk/change control, delivery flow, readiness, benefits realization, and institutional learning.
+- **D14 Governance, Performance, and Accountability** — minimal-effective governance, decision rights, accountable ownership, KPI architecture, management cadence, escalation/exceptions, commitment/benefit tracking, assurance, traceability, and governance adaptation.
+- **D16 Enterprise Architecture and Microsoft** — current/target/transition architecture, architecture requirements, cloud/platform, application/integration, build-buy-partner-retain-retire, Microsoft interoperability, reliability/operability, lifecycle economics, and evolutionary governance.
 
-S04 materializes four additional complete scorecards:
+D14 is explicitly optimized for **minimal effective governance** rather than bureaucratic volume. D16 treats Microsoft as a strong enterprise ecosystem to evaluate on evidence; vendor alignment is not itself an architectural objective.
 
-- **D03 Business Model and Purpose** — value creation, value delivery, value capture, stakeholder coherence, model architecture, purpose integrity, ecosystem fit, resilience, experimentation and coherence stewardship;
-- **D05 Investment, M&A, and Transferability** — investment thesis, valuation drivers, diligence, transaction structure, strategic fit, founder dependence, transferability, downside protection, integration and investment governance;
-- **D11 Operations and Processes** — work-as-done, target operating model, capacity/flow, constraints, standard work, quality, automation, exceptions/recovery, operating economics and continuous improvement;
-- **D25 Integrated Synthesis and Benefits Realization** — evidence intake, contradiction resolution, materiality, integrated recommendations, dependency roadmap, benefit baselines, realization, integrated metrics, executive opinion and synthesis governance.
-
-D25 is explicitly bounded as an integration seat: it synthesizes and makes benefit realization reconstructible, but does not silently replace the Strategist or Human Decision Owner.
-
-After S04 the catalog contains **13 / 72 complete scorecards and 1,300 / 7,200 canonical statements**.
+After S05 the catalog contains **17 / 72 complete scorecards and 1,700 / 7,200 canonical statements**.
 
 ## Validation
 
@@ -119,11 +96,12 @@ Run:
 python3 tools/validate_scorecards.py
 ```
 
-During partial construction, the manifest validates the materialized subset and its declared counts. When `complete` becomes `true`, the validator additionally requires exactly 72 seat files and exactly 7,200 statements.
+During partial construction the manifest validates the materialized subset and declared counts. When `complete` becomes `true`, the validator additionally requires exactly 72 seat files and exactly 7,200 statements.
 
 ### Accepted increments
 
-- **S01** exact-head workflow: success on `4d130e0db9fef425ce5752414ed4ee8b42378b88`.
-- **S02** functional acceptance: success on `eddec91bcdf5aa8334e295d76f22b007c65ddbed`, validating **5 scorecards / 500 statements**.
-- **S03** functional acceptance: success on `f00e436556e6a2a3cedcf22d737d721a5bcddece`; subsequent S03 metadata head also passed the same workflow.
-- **S04** is accepted only after the exact head containing all four S04 scorecards, `1.0.0-dev.4` manifest, and this documentation passes `Validate seat scorecards`.
+- **S01:** success on `4d130e0db9fef425ce5752414ed4ee8b42378b88`.
+- **S02:** success on `eddec91bcdf5aa8334e295d76f22b007c65ddbed`.
+- **S03:** success on `f00e436556e6a2a3cedcf22d737d721a5bcddece` and subsequent metadata head.
+- **S04:** functional success on `8b20e881bb4ea3f4a361dbd206686c70bb6954ed`; acceptance-marker head `a1a6e1abecc35ff0bf1cdde90180a773f03480b6` also passed.
+- **S05:** accepted only after the exact head containing all four S05 scorecards, `1.0.0-dev.5` manifest, and this documentation passes `Validate seat scorecards`.
