@@ -1,4 +1,5 @@
 using DecisionEKernel.Core.Knowledge;
+using Xunit;
 
 namespace DecisionEKernel.Core.Tests.Knowledge;
 
@@ -67,33 +68,12 @@ public sealed class SyntheticKnowledgeProviderTests
     private static (SyntheticKnowledgeProvider Provider, KnowledgePackDescriptor Descriptor) CreateProvider()
     {
         var descriptor = new KnowledgePackDescriptor(
-            new KnowledgePackId("pack.synthetic"),
-            new KnowledgePackVersion("1.0.0"),
-            new KnowledgeDigest(new string('a', 64)),
-            "1.0",
-            new HashSet<CapabilityId> { CapabilityA, CapabilityB },
-            new HashSet<CriterionId> { CriterionA });
-
-        var capsules = new[]
-        {
-            new CapabilityCapsule(new CapsuleId("capsule.synthetic.a"), CapabilityA, "1.0.0"),
-            new CapabilityCapsule(new CapsuleId("capsule.synthetic.b"), CapabilityB, "1.0.0")
-        };
-
+            new KnowledgePackId("pack.synthetic"), new KnowledgePackVersion("1.0.0"), new KnowledgeDigest(new string('a', 64)), "1.0",
+            new HashSet<CapabilityId> { CapabilityA, CapabilityB }, new HashSet<CriterionId> { CriterionA });
+        var capsules = new[] { new CapabilityCapsule(new CapsuleId("capsule.synthetic.a"), CapabilityA, "1.0.0"), new CapabilityCapsule(new CapsuleId("capsule.synthetic.b"), CapabilityB, "1.0.0") };
         return (new SyntheticKnowledgeProvider(new ProviderId("provider.synthetic"), descriptor, capsules), descriptor);
     }
 
-    private static KnowledgeRequest Request(
-        IReadOnlyList<CapabilityId> capabilities,
-        IReadOnlyList<CriterionId> criteria,
-        string scopeHandle = "scope.synthetic",
-        int maxResults = 8) =>
-        new(
-            "work.synthetic",
-            "seat.synthetic",
-            capabilities.ToHashSet(),
-            criteria.ToHashSet(),
-            scopeHandle,
-            "correlation.synthetic",
-            maxResults);
+    private static KnowledgeRequest Request(IReadOnlyList<CapabilityId> capabilities, IReadOnlyList<CriterionId> criteria, string scopeHandle = "scope.synthetic", int maxResults = 8) =>
+        new("work.synthetic", "seat.synthetic", capabilities.ToHashSet(), criteria.ToHashSet(), scopeHandle, "correlation.synthetic", maxResults);
 }
