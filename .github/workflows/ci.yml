@@ -25,7 +25,10 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          if grep -RInE --exclude-dir=.git --exclude='*.md' \
+          # The workflow necessarily contains the deny-list itself, so exclude CI
+          # definitions from the content scan. Documentation is also allowed to
+          # describe the boundary explicitly; executable/data artifacts are not.
+          if grep -RInE --exclude-dir=.git --exclude-dir=.github --exclude='*.md' \
             '(professional-doctorates|ArquitectoDeSoluciones|knowledge-packs/private|embeddings?/|vector[-_ ]?index|sourceText|sourceExcerpt)' .; then
             echo 'Potential private knowledge reference found outside documentation.' >&2
             exit 1
