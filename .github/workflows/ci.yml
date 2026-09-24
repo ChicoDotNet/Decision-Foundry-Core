@@ -64,3 +64,17 @@ jobs:
           grep -Fq 'does not publish production embeddings' "$contract"
           grep -Fq 'building Core does not require access to a proprietary repository' "$contract"
           grep -Fq 'a synthetic provider can exercise all public algorithms' "$contract"
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Restore
+        run: dotnet restore tests/DecisionEKernel.Core.Tests/DecisionEKernel.Core.Tests.csproj
+
+      - name: Build
+        run: dotnet build tests/DecisionEKernel.Core.Tests/DecisionEKernel.Core.Tests.csproj --configuration Release --no-restore
+
+      - name: Test
+        run: dotnet test tests/DecisionEKernel.Core.Tests/DecisionEKernel.Core.Tests.csproj --configuration Release --no-build --no-restore
