@@ -35,7 +35,7 @@ Core supports automatic, explicit and mixed staffing.
 
 ### Automatic staffing
 
-When a seat has no explicit binding, the Recruiter uses the canonical 100-statement scorecard for that seat and selects the eligible occupant candidate with the highest arithmetic-mean affinity.
+When a seat has no explicit binding, the Recruiter resolves the applicable versioned 100-criterion scorecard pack through the host/provider boundary and selects the eligible occupant candidate with the highest arithmetic-mean affinity. Core requires the criterion identities and assessment vector; production criterion semantics may remain private.
 
 ### Explicit staffing
 
@@ -110,7 +110,8 @@ The invariant is **12 recruited Directors**, not 12 concurrent requests and cert
 The public API should make role and occupant/model resolution explicit and replaceable. Exact type names remain an implementation detail until the first code increment, but the contract requires equivalents of:
 
 - stable seat identity for all 72 seats;
-- executable seat profiles and versioned scorecards;
+- executable seat profiles and versioned scorecard-pack references;
+- an opaque knowledge-provider abstraction for private scorecard/capability packs;
 - an opaque occupant/candidate identity;
 - provider-neutral model connector abstraction;
 - connector/occupant resolver;
@@ -147,12 +148,15 @@ required synthesis / governance / flow roles activate by contract
 
 The Recruiter itself does not need a separate model connection merely to make the trivial one-occupant case possible.
 
+A public sample must use a synthetic knowledge/scorecard provider. Production proprietary knowledge is supplied at runtime and is not a required Core source/package asset.
+
 ## Recruitment and binding capabilities
 
 Core exposes:
 
 - the reusable [Recruiter contract](recruiter-contract.md);
-- the deterministic [100-statement seat scorecard](seat-scorecard-contract.md); and
+- the deterministic [100-criterion seat scorecard](seat-scorecard-contract.md);
+- the [Opaque knowledge provider contract](knowledge-provider-contract.md); and
 - the [Explicit seat binding contract](seat-binding-contract.md).
 
 A host may therefore choose between automatic staffing, fully manual connector selection or a hybrid of both without changing the 72-seat institution.
