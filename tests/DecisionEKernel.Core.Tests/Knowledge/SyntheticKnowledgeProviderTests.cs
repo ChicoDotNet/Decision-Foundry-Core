@@ -12,9 +12,7 @@ public sealed class SyntheticKnowledgeProviderTests
     public async Task DescribeAsync_ReturnsOpaqueDescriptor()
     {
         var (provider, descriptor) = CreateProvider();
-
         var actual = await provider.DescribeAsync();
-
         Assert.Equal(descriptor, actual);
         Assert.Equal("1.0", actual.ContractVersion);
     }
@@ -24,9 +22,7 @@ public sealed class SyntheticKnowledgeProviderTests
     {
         var (provider, descriptor) = CreateProvider();
         var request = Request([CapabilityB], [CriterionA]);
-
         var result = await provider.RetrieveAsync(request);
-
         Assert.Equal(new ProviderId("provider.synthetic"), result.ProviderId);
         Assert.Equal(descriptor, result.Descriptor);
         Assert.Collection(result.Capsules, capsule => Assert.Equal(CapabilityB, capsule.CapabilityId));
@@ -36,10 +32,7 @@ public sealed class SyntheticKnowledgeProviderTests
     public async Task RetrieveAsync_RespectsMaxResults()
     {
         var (provider, _) = CreateProvider();
-        var request = Request([CapabilityA, CapabilityB], [CriterionA], maxResults: 1);
-
-        var result = await provider.RetrieveAsync(request);
-
+        var result = await provider.RetrieveAsync(Request([CapabilityA, CapabilityB], [CriterionA], maxResults: 1));
         Assert.Single(result.Capsules);
     }
 
@@ -47,36 +40,28 @@ public sealed class SyntheticKnowledgeProviderTests
     public async Task RetrieveAsync_FailsClosedWithoutScope()
     {
         var (provider, _) = CreateProvider();
-        var request = Request([CapabilityA], [CriterionA], scopeHandle: " ");
-
-        await Assert.ThrowsAsync<KnowledgeProviderException>(async () => await provider.RetrieveAsync(request));
+        await Assert.ThrowsAsync<KnowledgeProviderException>(async () => await provider.RetrieveAsync(Request([CapabilityA], [CriterionA], scopeHandle: " ")));
     }
 
     [Fact]
     public async Task RetrieveAsync_FailsClosedForUnknownCriterion()
     {
         var (provider, _) = CreateProvider();
-        var request = Request([CapabilityA], [new CriterionId("criterion.synthetic.999")]);
-
-        await Assert.ThrowsAsync<KnowledgeProviderException>(async () => await provider.RetrieveAsync(request));
+        await Assert.ThrowsAsync<KnowledgeProviderException>(async () => await provider.RetrieveAsync(Request([CapabilityA], [new CriterionId("criterion.synthetic.999")])));
     }
 
     [Fact]
     public async Task RetrieveAsync_FailsClosedForUnknownCapability()
     {
         var (provider, _) = CreateProvider();
-        var request = Request([new CapabilityId("cap.synthetic.missing")], [CriterionA]);
-
-        await Assert.ThrowsAsync<KnowledgeProviderException>(async () => await provider.RetrieveAsync(request));
+        await Assert.ThrowsAsync<KnowledgeProviderException>(async () => await provider.RetrieveAsync(Request([new CapabilityId("cap.synthetic.missing")], [CriterionA])));
     }
 
     [Fact]
     public async Task RetrieveAsync_RejectsNonPositiveMaxResults()
     {
         var (provider, _) = CreateProvider();
-        var request = Request([CapabilityA], [CriterionA], maxResults: 0);
-
-        await Assert.ThrowsAsync<KnowledgeProviderException>(async () => await provider.RetrieveAsync(request));
+        await Assert.ThrowsAsync<KnowledgeProviderException>(async () => await provider.RetrieveAsync(Request([CapabilityA], [CriterionA], maxResults: 0)));
     }
 
     private static (SyntheticKnowledgeProvider Provider, KnowledgePackDescriptor Descriptor) CreateProvider()
@@ -99,9 +84,16 @@ public sealed class SyntheticKnowledgeProviderTests
     }
 
     private static KnowledgeRequest Request(
-        IReadOnlySet<CapabilityId> capabilities,
-        IReadOnlySet<CriterionId> criteria,
+        IReadOnlyList<CapabilityId> capabilities,
+        IReadOnlyList<CriterionId> criteria,
         string scopeHandle = "scope.synthetic",
         int maxResults = 8) =>
-        new("work.synthetic", "seat.synthetic", capabilities, criteria, scopeHandle, "correlation.synthetic", maxResults);
+        new(
+            "work.synthetic",
+            "seat.synthetic",
+            capabilities.ToHashSet(),
+            criteria.ToHashSet(),
+            scopeHandle,
+            "correlation.synthetic",
+            maxResults);
 }
