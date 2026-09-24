@@ -1,0 +1,63 @@
+name: CI
+
+on:
+  pull_request:
+    branches:
+      - dev
+  push:
+    branches:
+      - dev
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  public-boundary:
+    name: Public boundary
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Reject private knowledge leakage
+        shell: bash
+        run: |
+          set -euo pipefail
+          if grep -RInE --exclude-dir=.git --exclude='*.md' \
+            '(professional-doctorates|ArquitectoDeSoluciones|knowledge-packs/private|embeddings?/|vector[-_ ]?index|sourceText|sourceExcerpt)' .; then
+            echo 'Potential private knowledge reference found outside documentation.' >&2
+            exit 1
+          fi
+
+      - name: Validate architecture document set
+        shell: bash
+        run: |
+          set -euo pipefail
+          required=(
+            README.md
+            docs/README.md
+            docs/reading-guide.md
+            docs/architecture/core-runtime-contract.md
+            docs/architecture/seat-profile-contract.md
+            docs/architecture/seat-scorecard-contract.md
+            docs/architecture/seat-binding-contract.md
+            docs/architecture/candidate-eligibility-contract.md
+            docs/architecture/instrumentation-plan-contract.md
+            docs/architecture/recruiter-contract.md
+            docs/architecture/knowledge-provider-contract.md
+          )
+          for path in "${required[@]}"; do
+            test -s "$path" || { echo "Missing or empty required document: $path" >&2; exit 1; }
+          done
+
+      - name: Enforce opaque knowledge boundary language
+        shell: bash
+        run: |
+          set -euo pipefail
+          contract=docs/architecture/knowledge-provider-contract.md
+          grep -Fq 'exactly 100 stable `CriterionId` values' "$contract"
+          grep -Fq 'does not publish production embeddings' "$contract"
+          grep -Fq 'building Core does not require access to a proprietary repository' "$contract"
+          grep -Fq 'a synthetic provider can exercise all public algorithms' "$contract"
