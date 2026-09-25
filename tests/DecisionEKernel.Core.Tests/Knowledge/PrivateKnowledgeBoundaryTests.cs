@@ -1,4 +1,5 @@
 using DecisionEKernel.Core.Knowledge;
+using Xunit;
 
 namespace DecisionEKernel.Core.Tests.Knowledge;
 
